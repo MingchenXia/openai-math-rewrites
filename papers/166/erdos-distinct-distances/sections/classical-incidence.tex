@@ -1,0 +1,63 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Classical incidence bounds}\label{sec:classical-incidence}
+
+We record the incidence bounds used in the induction and in the count of rich planar motions. The constants here are absolute.
+
+\begin{theorem}\label{thm:ci-st}
+For finite sets $Q$ of $n$ points and $\mathcal{L}$ of $L$ distinct real lines in the plane,
+\[
+ I(Q,\mathcal{L})\le C\bigl(n^{2/3}L^{2/3}+n+L\bigr).
+\]
+Consequently the number of points incident to at least $k\ge2$ lines is at most $C(L^2/k^3+L/k)$, and the number of lines containing at least $k\ge2$ points of an $n$-point set is at most $C(n^2/k^3+n/k)$. The same assertions apply to finite point--line configurations in $\mathbb{R}^s$ and in real projective space.
+\end{theorem}
+
+\begin{proof}
+The planar incidence inequality is \cite[Theorem~1]{szemereditrotter1983}.
+
+For a set of $s$ points each incident to at least $k$ lines, the bound gives $ks\le C(s^{2/3}L^{2/3}+s+L)$.  If $k$ exceeds a fixed constant, absorb the term $Cs$ and compare the two remaining terms, obtaining $s\le C'(L^2/k^3+L/k)$.  For bounded $k\ge2$, count pairs of lines: $s\le\binom L2$, which gives the same assertion after increasing the constant.  Interchanging points and lines by planar projective duality proves the rich-line statement.  One can instead apply the incidence bound directly to the finite collection of rich lines, using that two points determine at most one line for bounded $k$.
+
+For a finite configuration in higher-dimensional affine space, choose a linear projection to $\mathbb{R}^2$ which is injective on its points and sends its lines to distinct lines.  Each forbidden coincidence is a proper algebraic condition on the projection, and finitely many such conditions can be avoided.  Existing incidences survive, which is all that an upper bound requires.  For projective data first choose an affine chart containing every specified point and in which no specified line is contained in the hyperplane at infinity.  Apply the affine argument.
+\end{proof}
+
+\begin{theorem}\label{thm:ci-rich-lines}
+Let $\mathcal{L}$ be $L$ distinct lines in $\mathbb{R}^3$, with at most $B_0$ in any affine plane.  For every integer $k\ge3$, the number $R_k$ of points lying on at least $k$ lines satisfies
+\[
+ R_k\le C\left(\frac{L^{3/2}}{k^2}
+             +\frac{LB_0}{k^3}+\frac Lk\right).
+\]
+There is no assumption about lines on quadrics in this theorem.
+\end{theorem}
+
+This is Guth--Katz \cite[Theorem~4.5]{guthkatz2015}.
+
+\begin{corollary}\label{cor:ci-planar-motions}
+Let $U,V\subset\mathbb{R}^2$ have respective cardinalities $u,v$. For $3\le k\le\min(u,v)$, at most $C(uv)^{3/2}/k^2$ Euclidean isometries $g$ have $|g(U)\cap V|\ge k$.
+\end{corollary}
+
+\begin{proof}
+There are finitely many isometries with at least two matches: two distinct ordered matches determine at most two isometries.  Separate the two orientation classes and reflect one cloud for the reversing class.  A generic rotation of $V$ makes $I+R$ invertible for the linear part $R$ of every counted direct isometry.  Write $J(x_1,x_2)=(-x_2,x_1)$.  In its planar Cayley chart a direct isometry is represented by a point $(t,c)\in\mathbb{R}\times\mathbb{R}^2$, and a match $x\mapsto y$ is represented by the line
+\begin{equation}\label{eq:ci-cayley-line}
+ c=\frac{x-y}{2}-tJ\frac{x+y}{2}.
+\end{equation}
+Indeed, putting $Z=tJ$, the match equation is equivalent to $(I+Z)y=(I-Z)x-2c$, and $(I+Z)^{-1}(I-Z)$ is orthogonal of determinant one.  Conversely every direct isometry with $I+R$ invertible has this representation.
+
+The $uv$ lines are distinct: their intercept and slope determine $x-y$ and $x+y$, hence both endpoints.  A plane in $(t,c)$-space has an equation $a\cdot c+bt=d$.  If $a=0$ it contains no such line.  Otherwise, for a line \eqref{eq:ci-cayley-line} contained in the plane,
+\[
+ a\cdot(x-y)=2d,\qquad a\cdot J(x+y)=2b.
+\]
+With $x$ fixed these determine $y$ uniquely, because $a$ and $J^Ta$ are independent; the same holds with $y$ fixed.  Thus the plane cap is $B_0\le\min(u,v)$.  Apply \cref{thm:ci-rich-lines}.  Its middle term is bounded by its first because $B_0\le\sqrt{uv}\le k\sqrt{uv}$, and its last is bounded by its first because $k\le\min(u,v)\le\sqrt{uv}$. The bounded orientation split completes the proof.
+\end{proof}
+
+\begin{theorem}\label{thm:ci-planar-distances}
+Every finite set $Q\subset\mathbb{R}^2$ of $n\ge2$ points determines at least $c n/\log(2n)$ distinct positive distances.
+\end{theorem}
+
+This is Guth--Katz \cite[Theorem~1.1]{guthkatz2015}. We also use the following form of its inverse bound.
+
+\begin{corollary}\label{cor:ci-planar-occupancy}
+If a finite set in Euclidean space determines at most $M\ge1$ positive distances, then any affine two-plane contains at most $CM\log(2M)$ of its points.  In particular, along a sequence with $B\longrightarrow\infty$ and $M=o(B^2)$, every two-plane has at most $B^{2+o(1)}$ points, uniformly in the plane.
+\end{corollary}
+
+\begin{proof}
+For an occupancy $n\ge2$, \cref{thm:ci-planar-distances} gives $n\le CM\log(2n)$.  The elementary inequality $\log(2n)\le C\sqrt n$ first yields $n\le C'M^2$; substitute this back into the logarithm to get $n\le C''M\log(2M)$. Occupancies zero and one are harmless.  If $M=o(B^2)$, eventually $M\le B^2$, so the uniform bound is $O(B^2\log(2B))$, which is $B^{2+o(1)}$.
+\end{proof}

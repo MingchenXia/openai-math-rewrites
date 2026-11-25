@@ -1,0 +1,34 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+Let $k$ be an algebraically closed field of characteristic $p>0$, let $X/k$ be a smooth integral projective variety of dimension $n$, and let $L$ be an ample line bundle. For $r\ge1$, write
+\[
+ U_r=\{(x_1,\ldots,x_r)\in X^r:x_i\ne x_j\text{ for }i\ne j\}
+\]
+for the open configuration space of ordered distinct points. Put $K_r=\overline{k(U_r)}$, and let $p_1,\ldots,p_r\in X(K_r)$ be the points specified by its geometric generic point. Define
+\begin{equation}\label{eq:generic-seshadri}
+ \varepsilon_r(X,L)=\inf_C
+ \frac{L_{K_r}\cdot C}{\sum_{i=1}^r\mult_{p_i}C},
+\end{equation}
+where $C$ ranges over integral curves in $X_{K_r}$ meeting at least one $p_i$. Multiplicity at a point outside $C$ is zero. Throughout, we use this ordinary, curve-defined Seshadri constant.
+
+\begin{maintheorem}\label{thm:main}
+Let $X/k$ be a smooth integral projective variety over an algebraically closed field of characteristic $p>0$, with $\dim X=n\ge2$, and let $L$ be ample. There is an integer $r_0=r_0(X,L)$ such that
+\[
+ \varepsilon_r(X,L)=\left(\frac{L^n}{r}\right)^{1/n}
+ \qquad\text{for every integer }r\ge r_0.
+\]
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}.
+
+
+The geometric generic formulation works over countable algebraically closed fields. On the blowup of the geometric generic tuple, the theorem gives the nef class
+\[
+ \pi^*L_{K_r}-(L^n/r)^{1/n}\sum_{i=1}^r E_i
+\]
+of top self-intersection zero, where the $E_i$ are the exceptional divisors.
+
+The proof adapts the complete-intersection flag and simplex reshaping of the complex case \cite[Sections~2--6]{OpenAI2026Higher}. In positive characteristic, formal substitution and reduction of jet matrices over $k[[s]]$ replace analytic rescaling. The equation $y^2+xy-x^3=0$ has two distinct tangent lines at the node, including in characteristic two. The branch estimate provides the two-coordinate reshaping, with jet orders expressed through powers of maximal ideals (\cref{sec:transfer,sec:flag,sec:reshape}).
+
+For fixed sufficiently large $r$, put $w=(L^n/r)^{1/n}$. The reshaped monomial spaces have supports in dilates of a simplex with intercepts $w,\ldots,w,rw$. Their graded addition law fills compact interior regions in large degree. The Chinese remainder theorem along the last coordinate gives jet separation up to order $\lfloor N\theta\rfloor$ for every fixed $0<\theta<w$ in large degree $N$ (\cref{sec:interpolation}). For each degree, the transferred rank condition holds at the geometric generic tuple because it holds on a nonempty open subset. \Cref{sec:positivity} turns these jet orders into intersection bounds and lets $\theta$ increase to $w$.

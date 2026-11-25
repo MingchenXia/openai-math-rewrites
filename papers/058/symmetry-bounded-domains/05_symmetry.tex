@@ -1,0 +1,32 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Symmetry of the quadratic model}\label{sec:symmetry}
+
+A domain is \emph{divisible} if a group of holomorphic automorphisms acts properly with the discrete topology and has a compact covering set. In the coordinate order of \eqref{eq:model}, Vey's theorem takes the following form.
+
+\begin{theorem}\label{thm:model-symmetry}
+Let $D\subset\mathbb{C}^m\times\mathbb{C}^k$ be a connected domain biholomorphic to a bounded domain.  Suppose that $D$ contains a point $(0,w)$ and is invariant under
+\[
+ (z,w)\longmapsto(z,w+a),\qquad
+ (z,w)\longmapsto(\ee^{\ii\theta}z,w),\qquad
+ (z,w)\longmapsto(r^{1/2}z,rw)
+\]
+for every $a\in\mathbb{R}^k$, $\theta\in\mathbb{R}$, and $r>0$. If $D$ is divisible, it is biholomorphic to a bounded symmetric domain. The case $m=0$ is included.
+\end{theorem}
+
+These are Vey's divisible $S$-domains of exponent $1/2$, with the variable blocks reversed. Homogeneity is his Theorem~1, and symmetry is the consequence stated immediately afterward \cite[p.~479]{Vey1970}. The zero-block convention is on pp.~480--481 of the same paper.
+
+\begin{proof}[Completion of the proof of \cref{thm:main}]
+For positive-dimensional $U$, \cref{thm:quadratic-model} gives the realization
+\[
+ D=\{(z,w):\Imop w-H(z,z)\in C\}.
+\]
+The group action transfers to $D$ by conjugacy, so $D$ is divisible. For $a_0\in C$, the point $(0,\ii a_0)$ lies in $D$. Real translation of $w$ and scalar unit rotation of $z$ preserve $\Imop w-H(z,z)$. The dilation $(z,w)\mapsto(\sqrt r\,z,rw)$ multiplies this vector by $r$, preserving its membership in $C$.
+
+For the bounded realization put $u_j=\ell_j(w)$, using the complex-linear extensions of the independent supports in \eqref{eq:strict-supports}. On $D$ they satisfy $\Imop u_j>c\|z\|^2\ge0$. Apply the Cayley transform in the $u_j$ coordinates and divide the $z$ block by $u_1+\ii$:
+\[
+ (z,w)\longmapsto
+ \left(\frac{u_1-\ii}{u_1+\ii},\ldots,\frac{u_k-\ii}{u_k+\ii},
+              \frac{z}{u_1+\ii}\right).
+\]
+The first $k$ coordinates lie in the unit disc. If $y=\Imop u_1$, the last block has norm at most $\sqrt{y/c}/(1+y)\le1/(2\sqrt c)$. The inverse Cayley maps recover the $u_j$, and their independence recovers $w$. Multiplying the last block by $u_1+\ii$ recovers $z$. These inverses are holomorphic on an open neighborhood of the image, so the map is a biholomorphism onto a bounded domain. If $m=0$, the last block is absent. \Cref{thm:model-symmetry} applies, and the zero-dimensional case is a point.
+\end{proof}

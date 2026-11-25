@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{array,float,xurl}
+\usetikzlibrary{arrows.meta,positioning}
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Reop}{Re}
+\DeclareMathOperator{\Imop}{Im}
+\DeclareMathOperator{\supp}{supp}
+
+\title{Symmetry of semialgebraic bounded domains with compact quotient}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove that a connected bounded semialgebraic open subset of a complex affine variety is smooth and biholomorphic to a bounded symmetric domain if it admits a properly discontinuous cocompact action by biholomorphisms. This answers the bounded-domain question of Koll\'ar and Pardon.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:introduction}
+
+Fix a closed affine embedding of a reduced complex algebraic set. Semialgebraicity and boundedness refer to this embedding, and openness refers to the complex topology. A bounded symmetric domain is a bounded connected open set in a complex vector space with a holomorphic involution at each point that fixes it in isolation.
+
+\begin{maintheorem}\label{thm:main}
+Let $U$ be a nonempty connected semialgebraic bounded open subset of a complex affine variety. Suppose that a group $\Gamma$ of biholomorphisms acts properly discontinuously on $U$ and that $U/\Gamma$ is compact. Then $U$ is smooth and is biholomorphic to a bounded symmetric domain.
+\end{maintheorem}
+
+We regard $\Gamma$ as discrete in the properness condition. In particular, stabilizers can be finite, and a point is allowed as a zero-dimensional domain. The theorem answers Question~25 of Koll\'ar and Pardon \cite[arXiv version~2, Question~25]{KP2012}. This exposition follows \cite{OpenAIMathSource}.
+
+Wong and Rosay identify the ball from an orbit accumulating at a strongly pseudoconvex boundary point \cite{Wong1977,Rosay1979}. Vey's theorem instead identifies the bounded symmetric domains among divisible generalized Siegel domains \cite[Theorem~1 and the following paragraph]{Vey1970}. Our proof reaches such a domain from semialgebraic boundary data.
+
+First, a polynomial-weighted maximum localizes automorphism orbits near a smooth point of the ambient affine variety. Cocompactness then gives smoothness of $U$ and properness of the chain-of-discs distance (\cref{sec:geometry}). In positive dimension, a semialgebraic boundary stratum supplies jointly controlled limits of normal offsets. Independent holomorphic supports bound all complex-normal directions, while attached analytic discs give interior balls of controlled radius at the rescaled scale (\cref{sec:preparation,sec:noncollapse}).
+
+Rescaling by $t^{-1/2}$ tangentially and $t^{-1}$ normally gives a model
+\[
+ \{(z,w)\in\mathbb{C}^m\times\mathbb{C}^k:
+   \operatorname{Im} w-H(z,z)\in C\},
+\]
+where $m+k=\dim U$, $k\geq1$, $C\subset\mathbb{R}^k$ is a connected open cone, and $H$ is a vector of Hermitian forms. Both interior and excluded-point estimates are needed to take limits of the normalized maps and their inverses. They give a biholomorphism with the entire model (\cref{sec:scaling}). The support inequalities give a bounded realization, and the transferred compact quotient allows Vey's theorem to be applied (\cref{sec:symmetry}).
+
+\input{01_geometry}
+\input{02_preparation}
+\input{03_noncollapse}
+\input{04_scaling}
+\input{05_symmetry}
+
+\printbibliography
+
+\end{document}

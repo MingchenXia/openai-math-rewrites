@@ -1,0 +1,85 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{From endpoint costs to metric medians}\label{sec:median}
+
+We now convert the optimal representations into a geometric property of the polar body. A \emph{metric median} of three points in a normed space is a point that lies between every pair: if the points are $x_0,x_1,x_2$, a median $m$ satisfies
+\[
+ \|x_i-x_j\|=\|x_i-m\|+\|m-x_j\|
+ \qquad(0\le i<j\le2).
+\]
+The median need not be unique. Its existence will imply the ball intersection property that characterizes linear Hanner bodies.
+
+\begin{proposition}\label{prop:metric-median}
+Let $K\subset\mathbb{R}^n$, $n\ge1$, be an origin-symmetric convex body with $P(K)=4^n/n!$, and put $Q=K^\circ$. Every triple of points in $(\mathbb{R}^n,p_Q)$ has a metric median.
+\end{proposition}
+
+\begin{proof}
+Translate the triple to $0,x,y$ and write $\|\cdot\|=p_Q$. A repeated point is itself a median, so take the points to be distinct. Put
+\[
+ p_1=\|x\|,\quad p_2=\|y\|,\quad p=\|x-y\|,\quad
+ s=p_1+p_2,\quad a=p_1-p_2,\quad A_\pm=\tfrac12(p\pm a).
+\]
+The number $c=(s-p)/2$ and both $A_\pm$ are nonnegative. Consider the compact convex set of possible points with the prescribed distance bounds to $x$ and $y$,
+\[
+ M_{x,y}=(x-A_+Q)\cap(y+A_-Q).
+\]
+It is nonempty because the segment $[x,y]$ contains a point at distances $A_+,A_-$ from its ends. We will show that $M_{x,y}$ meets $cQ$.
+
+Fix $u\in\operatorname{int}K$ and apply \cref{prop:optimal-representation} to $(x-y,a)$ at $X_\delta=(\delta u,1-\delta)$, $0<\delta<1$. This point is interior to $K\oplus_1[-1,1]$ by \eqref{eq:sum-gauges}. The optimal representation has rows $(b_i,\sigma_i)\in Q\times\{-1,1\}$ and nonnegative weights $\alpha_i$ of total mass $p$. The masses of the two signs are $A_\pm$, since their sum is $p$ and their difference is the last coordinate $a$. Hence, with $r_\pm=\sum_{\sigma_i=\pm1}\alpha_i b_i$, the point $m=x-r_+=y+r_-$ belongs to $M_{x,y}$.
+
+By evenness of the profile $\lambda$ and \cref{lem:lens-endpoint},
+\[
+ \frac{\lambda(\langle(b,\sigma),X_\delta\rangle)}
+      {\lambda(1-\delta)}
+   =1-\sigma\langle b,u\rangle+o(1)
+ \qquad(\delta\downarrow0),
+\]
+uniformly in $(b,\sigma)\in Q\times\{-1,1\}$, since $1-\sigma\langle b,u\rangle$ stays in the compact interval $[1-p_K(u),1+p_K(u)]\subset(0,\infty)$. The normalized optimal cost is therefore
+\[
+ p-\langle x+y,u\rangle+2\langle m,u\rangle+o(1).
+\]
+The two rows in $(x-y,a)=p_1(x/p_1,1)+p_2(-y/p_2,-1)$ give a competing cost tending to $s-\langle x+y,u\rangle$. Comparing the two costs by \eqref{eq:optimal-cost} and taking $\delta\downarrow0$ gives
+\[
+ \min_{m\in M_{x,y}}\langle m,u\rangle\le c
+ \qquad(u\in\operatorname{int}K).
+\]
+The inequality extends to $u\in K$ by continuity. For any nonzero $v$, apply it to $u=v/h_Q(v)\in\partial K$ to obtain
+\[
+ \min_{m\in M_{x,y}}\langle m,v\rangle
+    \le c\,h_Q(v)=\max_{z\in cQ}\langle z,v\rangle .
+\]
+The inequality also holds at $v=0$. If the two compact convex sets were disjoint, a strictly separating functional would give the reverse strict inequality in some direction. Hence $M_{x,y}\cap cQ\ne\varnothing$.
+
+We have $\|m\|\le c$, $\|x-m\|\le A_+$, and $\|y-m\|\le A_-$. Their corresponding pairwise sums are bounded by $c+A_+=p_1$, $c+A_-=p_2$, and $A_++A_-=p$. The triangle inequality forces equality in each sum, as required.
+\end{proof}
+
+\subsection{Three balls and the equality classification}
+
+A normed space has the \emph{three-ball intersection property}, or \emph{3.2 intersection property}, if every three pairwise intersecting closed balls have a common point. The equivalence with the metric-median condition is part of Lima's norm-additive decomposition criterion \cite[Theorem~1.2]{Lima1978}. The direction we need follows by adjusting the median toward one center.
+
+\begin{lemma}\label{lem:three-balls}
+Suppose every triple of points in a real normed space has a metric median. Then the space has the three-ball intersection property, including balls of radius zero.
+\end{lemma}
+
+\begin{proof}
+For centers $x_i$ and radii $r_i$, let $m$ be a median and set $d_i=\|x_i-m\|$. Pairwise intersection gives $d_i+d_j\le r_i+r_j$, so at most one $d_i$ exceeds its radius. If $d_1>r_1$, move a distance $t=d_1-r_1$ from $m$ toward $x_1$ along their segment. The resulting point is at distance $r_1$ from $x_1$ and at distance at most $d_j+t\le r_j$ from each other center. If all $d_i\le r_i$, the median itself works.
+\end{proof}
+
+The required structure theorem is due to Hansen and Lima. In their terminology the balls are closed and have arbitrary radii \cite[Section~1]{HansenLima1981}.
+
+\begin{theorem}\label{thm:hansen-lima}
+A nonzero finite-dimensional real Banach space with the 3.2 intersection property is linearly isometric to a space obtained from the real line by finitely many $\ell_1$ and $\ell_\infty$ direct sums.
+\end{theorem}
+
+This is \cite[Corollary~7.4]{HansenLima1981}. The two direct-sum norms are exactly those in \eqref{eq:sum-gauges}, so their unit balls are Hanner polytopes.
+
+\begin{proposition}\label{prop:equality-classification}
+If an origin-symmetric convex body $K\subset\mathbb{R}^n$, $n\ge1$, satisfies $P(K)=4^n/n!$, then it is a linear Hanner body.
+\end{proposition}
+
+\begin{proof}
+Put $Q=K^\circ$. \Cref{prop:metric-median} and \cref{lem:three-balls} give the 3.2 intersection property for $(\mathbb{R}^n,p_Q)$. This is a real Banach space, since every finite-dimensional normed space is complete. \Cref{thm:hansen-lima} gives an invertible linear map $T$ and a Hanner polytope $H$ with $Q=TH$. By \eqref{eq:linear-polarity} and \cref{lem:hanner},
+\[
+ K=Q^\circ=T^{-\mathsf T}H^\circ
+\]
+is a linear Hanner body. The converse was proved in \cref{lem:hanner}; together with \cref{cor:symmetric-inequality}, this completes \cref{thm:main}.
+\end{proof}

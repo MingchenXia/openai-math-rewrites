@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usetikzlibrary{arrows.meta,calc,positioning}
+
+\newcommand{\Tot}{\operatorname{Tot}}
+\newcommand{\mult}{\operatorname{mult}}
+
+\title{Nagata's conjecture for plane curves}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove that for $r\geq10$ very general points of the complex projective plane, the sum of the multiplicities of any nonzero effective curve of degree $d$ is strictly less than $d\sqrt r$. The proof reduces unequal multiplicities to equal ones by symmetrization and treats the nonsquare case by degeneration on the normal bundle of a smooth cubic.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/01-reductions}
+\input{sections/02-elliptic}
+\input{sections/03-limits}
+\input{sections/04-interpolation}
+\input{sections/consequences}
+
+\printbibliography
+
+\end{document}

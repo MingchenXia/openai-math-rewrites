@@ -1,0 +1,68 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Volume and measure consequences}\label{sec:consequences}
+
+With \cref{thm:main} proved, we derive the additive volume inequality stated in the introduction and then apply Saroglou's transfer theorem to even log-concave measures.
+
+\subsection{The symmetric \texorpdfstring{$L_p$}{Lp} volume inequality}
+\label{subsec:lp-proof}
+
+\begin{proof}[Proof of \cref{cor:lp}]
+Put $a=|K|^{1/n}$, $b=|L|^{1/n}$, $K_0=a^{-1}K$ and $L_0=b^{-1}L$. Set
+\[
+ c^p=(1-\lambda)a^p+\lambda b^p,qquad
+ \theta=\lambda b^p/c^p.
+\]
+The weighted arithmetic--geometric mean inequality yields the pointwise bound
+\[
+ \bigl((1-\lambda)h_K^p+\lambda h_L^p\bigr)^{1/p}
+ =c\bigl((1-\theta)h_{K_0}^p+\theta h_{L_0}^p\bigr)^{1/p}
+ \geq c h_{K_0}^{1-\theta}h_{L_0}^\theta.
+\]
+The Wulff construction is monotone in its defining function and commutes with positive dilations. By \cref{thm:main}, its value on $h_{K_0}^{1-\theta}h_{L_0}^\theta$ has volume at least $1$. The left side of \eqref{eq:lp} is therefore at least $c^p$.
+\end{proof}
+
+\subsection{Even log-concave measures and the \texorpdfstring{$(B)$}{(B)}-conjecture}
+\label{subsec:sec-measure}
+
+We now pass from volume to integration against even log-concave measures. A nonnegative Radon measure $\mu$ on $\mathbb{R}^n$ is \emph{log-concave} if
+\[
+ \mu((1-\theta)A+\theta B)
+ \ge \mu(A)^{1-\theta}\mu(B)^\theta
+ \qquad(0<\theta<1)
+\]
+for all compact sets $A,B\subset\mathbb{R}^n$; it is \emph{even} if $\mu(A)=\mu(-A)$ for every Borel set $A$. Radon measures are finite on compact sets, but their total mass need not be finite. We use the analogous multiplicative definition of log-concavity for nonnegative functions, so the identically zero function is included. Endpoint products in an interpolation inequality are understood as the corresponding endpoint values.
+
+Saroglou's transfer theorem gives the logarithmic Brunn--Minkowski inequality for an even log-concave density in any dimension in which it holds for Lebesgue measure \cite[Theorem~3.1]{Saroglou2016}. Averaging the measure over small translated balls will give such a density, even when the original measure is supported on a proper subspace.
+
+\begin{corollary}
+\label{cor:measure}
+Let $n\ge1$, let $\mu$ be an even log-concave Radon measure on $\mathbb{R}^n$, and let $K,L\subset\mathbb{R}^n$ be origin-symmetric convex bodies. Then, for every $0\le\lambda\le1$,
+\begin{equation}\label{eq:measure-logbm}
+ \mu\bigl(\mathcal{W}[h_K^{1-\lambda}h_L^\lambda]\bigr)
+ \ge \mu(K)^{1-\lambda}\mu(L)^\lambda.
+\end{equation}
+Consequently, for every origin-symmetric convex body $K\subset\mathbb{R}^n$, the function
+\begin{equation}\label{eq:b-function}
+ \mathbb{R}\ni t\longmapsto \mu(\ee^tK)
+\end{equation}
+is log-concave.
+\end{corollary}
+
+\begin{proof}
+Fix $0<\lambda<1$, and put $D=\mathcal W[h_K^{1-\lambda}h_L^\lambda]$. Let $B$ be the closed unit ball. Choose $r>0$ with $rB\subset K\cap L$. The Wulff definition then gives $rB\subset D$ as well. We may restrict $\mu$ to a sufficiently large closed ball centered at $0$ containing $2K\cup2L\cup2D$. The restriction is finite by the Radon property. It is even and log-concave because the ball is symmetric and convex, and it has the same values on $K,L,D$. The zero measure and the endpoint cases give equality, so assume the restricted measure is nonzero.
+
+Let $\mu_\varepsilon$ be its convolution with the uniform probability on $\varepsilon B$. Its density at $x$ is $f_\varepsilon(x)=\mu(x+\varepsilon B)/|\varepsilon B|$, by Fubini and symmetry of $B$. This density is even. It is log-concave by the defining inequality for $\mu$ on compact sets, since the Minkowski interpolation of $x+\varepsilon B$ and $y+\varepsilon B$ is the translate of $\varepsilon B$ by the interpolated center. Normalizing the density to have mass one leaves the transfer inequality unchanged, since both sides are homogeneous of degree one in the measure.
+
+Take $0<\delta<1/2$ and $\varepsilon=\delta r$. If $x\in K$ and $z\in\varepsilon B$, then $x+z\in(1+\delta)K$ by convexity and $rB\subset K$. Thus $\mu_\varepsilon((1+\delta)K)\ge\mu(K)$, and the same holds for $L$. The Wulff interpolation of $(1+\delta)K$ and $(1+\delta)L$ is $(1+\delta)D$, by homogeneity. Apply \cref{thm:main} and Saroglou's transfer to get
+\[
+ \mu_\varepsilon((1+\delta)D)\ge
+ \mu(K)^{1-\lambda}\mu(L)^\lambda.
+\]
+For a point $x+z$ counted by the left side, where $z\in\varepsilon B$, one has
+\[
+ x\in (1+\delta)D+\varepsilon B\subset(1+2\delta)D
+\]
+because $rB\subset D$. Therefore the left side is at most $\mu((1+2\delta)D)$. The dilates decrease to $D$ as $\delta\downarrow0$. Continuity of the finite measure from above gives \eqref{eq:measure-logbm}.
+
+Finally $h_{\ee^t K}=\ee^t h_K$. The Wulff interpolation of $\ee^s K$ and $\ee^t K$ is therefore $\ee^{(1-\lambda)s+\lambda t}K$. Apply \eqref{eq:measure-logbm} to this pair to obtain \eqref{eq:b-function}.
+\end{proof}

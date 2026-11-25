@@ -1,0 +1,56 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{The variance inequality}
+\label{sec:variance}
+
+The tensor estimate controls two terms containing the Hessian of the potential. Each homogeneous summand contributes to both terms, and one Cauchy--Schwarz inequality combines its contributions with the correct coefficient. All expectations below refer to the probability $\mu$ of \eqref{eq:potential}.
+
+\begin{proof}[Proof of \cref{prop:variance}]
+The potential is smooth and even, and $D^2V\ge\varepsilon I$. \Cref{lem:moment} therefore supplies the moment coordinates, with $0<\tau\le (4/\varepsilon)I$. Put
+\[
+ H_i=D_x^2\psi_i,\qquad a_i=\mathbb{E}\psi_i.
+\]
+Each $H_i$ is positive semidefinite, and $a_i>0$ since $p_i\ne0$ and $\mu$ has positive density everywhere. Homogeneity gives
+\[
+ x\cdot\nabla\psi_i=q\psi_i,\qquad H_i x=(q-1)\nabla\psi_i.
+\]
+The moment-coordinate integration by parts gives
+\[
+ m_i:=\mathbb E\tr(\tau H_i)=\mathbb E(x\cdot\nabla\psi_i)=q a_i .
+\]
+For this integration by parts one can first multiply $\nabla\psi_i$ by a smooth cutoff equal to one on $B_R$ and supported on $B_{2R}$, with gradient $O(R^{-1})$. The cutoff error vanishes because $\tau$ is bounded and all polynomial moments are finite.
+
+For even $f\in C_c^\infty(\mathbb R^n)$ put
+\[
+ B=\tau D_x^2 f\,\tau,\qquad W=\delta_\mu B,\qquad
+ u=\delta_\mu W=A(A-1)f,\qquad M=\tau^{-1}.
+\]
+For each $i$, \eqref{eq:test-pairing} gives
+\[
+ d_i:=\mathbb E(u\psi_i)=\mathbb E(W\cdot\nabla\psi_i)=\mathbb E\tr(BH_i).
+\]
+In the $L^2(\mu)$ direct sum of matrices and vectors, with the Hilbert--Schmidt inner product for matrices, pair
+\[
+ (H_i^{1/2}\tau^{1/2},\,H_i^{1/2}x)
+ \quad\text{with}\quad
+ (H_i^{1/2}B\tau^{-1/2},\,H_i^{1/2}W).
+\]
+The pairing is $d_i+(q-1)d_i=q d_i$ by homogeneity. The squared norm of the first pair is $m_i+(q-1)m_i=q m_i$. Cauchy--Schwarz therefore gives
+\[
+ \frac{d_i^2}{a_i}
+ \le \mathbb E\tr(MBH_iB)+\mathbb E(W^{\mathsf T}H_iW),
+\]
+using $m_i=q a_i$. Since $D^2V=\varepsilon I+\sum_iH_i$, \cref{lem:tensor} and \eqref{eq:bochner} bound the sum of the right-hand sides by $\mathbb E u^2$. It follows that
+\begin{equation}\label{eq:dual-bound}
+ \sum_i \frac{|\mathbb E(u\psi_i)|^2}{a_i}\le \|u\|_2^2 .
+\end{equation}
+The range density in \cref{lem:density} extends this inequality to every centered even $u\in L^2(\mu)$, since each $\psi_i$ belongs to $L^2(\mu)$.
+
+For $F=\sum_i b_i\psi_i$ and centered even $u$ with $\|u\|_2\le1$, another Cauchy--Schwarz inequality gives
+\[
+ |\mathbb E(uF)|\le
+ \left(\sum_i b_i^2a_i\right)^{1/2}
+ \left(\sum_i|\mathbb E(u\psi_i)|^2/a_i\right)^{1/2}
+ \le \left(\sum_i b_i^2a_i\right)^{1/2}.
+\]
+Taking the supremum in this subspace gives $\|F-\mathbb EF\|_2$ on the left. Squaring proves \eqref{eq:variance}, and \cref{sec:reduction} gives \cref{thm:main}.
+\end{proof}

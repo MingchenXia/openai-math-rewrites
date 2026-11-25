@@ -1,0 +1,20 @@
+# Local TeX builds and auxiliary files
+.build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+/papers/**/main.pdf
+
+# Local verification results and editor files
+verification-results/
+__pycache__/
+.venv/
+.DS_Store

@@ -1,0 +1,110 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Realization in a polar product}
+\label{sec:realization}
+
+In the coordinates $z=u+ix$, the position in $K$ is $x$. We realize the holomorphic part of the symplectic form by adding a correction to the momentum $-u$. The horizontal slice estimate is what keeps this correction in a controlled multiple of $K^\circ$.
+
+\begin{proposition}\label{prop:finite-strips}
+Let $n\ge2$ be an integer, let $b_1,\ldots,b_m\in\mathbb{R}^n$ span $\mathbb{R}^n$, and set
+\[
+ K=\{x\in\mathbb{R}^n: |b_j\cdot x|\le 1,
+                         \quad 1\le j\le m\}.
+\]
+For every $0<c<4$ there is a smooth symplectic embedding
+\[
+ B^{2n}(c)\longrightarrow
+ \operatorname{int}(K)\times\operatorname{int}(K^\circ).
+\]
+\end{proposition}
+
+\begin{proof}
+Extend each strip functional complex-linearly, $\ell_j(z)=b_j\cdot z$. Let $g:D\to\mathbb D$ be the inverse of the planar map in \cref{lem:planar-map}, and define
+\begin{equation}\label{eq:strip-domain}
+ \Omega=\{z\in\mathbb{C}^n:\ell_j(z)\in D\text{ for every }j\}.
+\end{equation}
+The linear map $L=(\ell_1,\ldots,\ell_m):\mathbb C^n\to\mathbb C^m$ is injective because the $b_j$ span. Thus $\Omega=L^{-1}(D^m)$ is a bounded open neighborhood of $0$, and inverse images under $L$ of compact sets are compact.
+
+For $k\ge2$, set
+\[
+ f_j(z)=g(\ell_j(z))^k,\qquad
+ \tau=\sum_j|f_j|^2,\qquad V=\{\tau<1\}\subset\Omega,\qquad
+ \omega=\ddc\bigl(|z|^2+\tau\bigr).
+\]
+The common zero of the $f_j$ is $0$, and each $f_j$ vanishes there to order at least $k$. For $0<s<1$ the sublevel $\{\tau\le s\}$ is closed in the compact inverse image under $L$ of $(g^{-1}(\overline B(0,s^{1/(2k)})))^m\subset D^m$. By \cref{thm:holomorphic-ball}, every standard ball of capacity less than $\pi k$ embeds symplectically in $(V,\omega)$.
+
+Write $z=u+ix$ and use the signed slice integrals $J_k$ from \cref{prop:uniform-slice} to define
+\begin{equation}\label{eq:strip-phase-map}
+ \Phi_k:V\longrightarrow\mathbb{R}^n_q\times\mathbb{R}^n_p,
+ \qquad
+ q=x,\qquad
+ p=-u-\sum_{j=1}^m
+       J_k(b_j\cdot u,b_j\cdot x)b_j.
+\end{equation}
+The signed integrals $J_k$ are smooth on $D$ by \cref{prop:uniform-slice}, so $\Phi_k$ is smooth.
+
+Set $v_j=b_j\cdot u$ and $t_j=b_j\cdot x$. Pulling back the target form gives
+\begin{align}
+ \Phi_k^*\omega_0
+ &=\sum_{\ell=1}^n dx_\ell\wedge(-du_\ell)
+       -\sum_{j=1}^m dt_j\wedge dJ_k(v_j,t_j)\notag\\
+ &=\sum_{\ell=1}^n du_\ell\wedge dx_\ell
+       +\sum_{j=1}^m
+          \partial_vJ_k(v_j,t_j)\,\rd v_j\wedge dt_j\notag\\
+ &=\ddc\bigl(|z|^2+\tau\bigr)=\omega.
+ \label{eq:strip-pullback}
+\end{align}
+Indeed, the terms containing $\partial_tJ_k$ vanish because $dt_j\wedge dt_j=0$, while
+\[
+ \partial_vJ_k(v,t)=k^2|g(v+it)|^{2k-2}|g'(v+it)|^2.
+\]
+This is precisely the coefficient of $\ddc|g(v+it)^k|^2$ in front of $dv\wedge dt$, with the convention for $\dc$ fixed above.
+
+To prove injectivity it suffices to fix $x$, since $q=x$. The horizontal slice $\Omega_x=\{u:u+ix\in\Omega\}$ is convex, being an intersection of inverse images of horizontal intervals in $D$. On that slice the Jacobian of $u\mapsto-p$ is
+\[
+ I+\sum_j\partial_vJ_k(b_j\cdot u,b_j\cdot x)\,b_j b_j^{\mathsf T}\ \ge I.
+\]
+The formula for momentum extends to the entire slice. Integrating this matrix inequality on the segment from $u_1$ to $u_2$ gives $-(p_2-p_1)\cdot(u_2-u_1)\ge|u_2-u_1|^2$, including when the corresponding slice of $V$ is disconnected. Thus equal momenta imply $u_1=u_2$. By \eqref{eq:strip-pullback}, $\Phi_k$ is also a local diffeomorphism, hence a symplectic embedding.
+
+The imaginary part of $D$ lies in $(-1,1)$, so $|\ell_j(x)|<1$ on $V$ and $q=x\in\operatorname{int}(K)$. Introduce the support function
+\[
+ h_K(p)=\max_{y\in K}\pairing{p}{y}.
+\]
+It satisfies $h_K(\pm b_j)\le1$, and $\operatorname{int}(K^\circ)=\{p:h_K(p)<1\}$. Because $\Omega$ is bounded, there is a finite constant $C_K$, independent of $k$, such that $h_K(-u)\le C_K$ on $\Omega$. Subadditivity and positive homogeneity of $h_K$, followed by \cref{prop:uniform-slice}, give
+\begin{align}
+ \frac{h_K(p)}{k}
+ &\le \frac{C_K}{k}
+       +\sum_{j=1}^m\frac{|J_k(v_j,t_j)|}{k}\notag\\
+ &\le \frac{C_K}{k}
+       +\frac{\pi}{4}\sum_{j=1}^m|g(\ell_j(z))|^{2k}
+       +m\epsilon_k
+  =\frac{C_K}{k}+\frac{\pi}{4}\tau(z)+m\epsilon_k.
+ \label{eq:strip-support}
+\end{align}
+Here $\epsilon_k\ge0$ tends to zero, uniformly in the planar argument. The number $m$ and the constant $C_K$ are fixed before $k$ varies. It follows that, for any $\eta>0$ and all sufficiently large $k$,
+\[
+ \frac{C_K}{k}+m\epsilon_k<\frac{\eta\pi}{4}.
+\]
+Since $\tau<1$ on $V$, \eqref{eq:strip-support} then gives the strict inclusion
+\begin{equation}\label{eq:strip-scaled-image}
+ \Phi_k(V)\subset
+ \operatorname{int}(K)\times S\operatorname{int}(K^\circ),
+ \qquad S=(1+\eta)\frac{\pi k}{4}.
+\end{equation}
+
+Fix $0<c<4$. Choose $\eta>0$ with $(1+\eta)c<4$, then choose $k$ large enough for \eqref{eq:strip-scaled-image}. The resulting constant $S$ satisfies $Sc<\pi k$, so there is a symplectic embedding
+\[
+ E:B^{2n}(Sc)\longrightarrow(V,\omega).
+\]
+Let $D_{\sqrt S}(z)=\sqrt S\,z$ and $L_S(q,p)=(q,p/S)$. The composition
+\begin{equation}\label{eq:strip-rescaling}
+ L_S\circ\Phi_k\circ E\circ D_{\sqrt S}:
+ B^{2n}(c)\longrightarrow
+ \operatorname{int}(K)\times\operatorname{int}(K^\circ)
+\end{equation}
+is a smooth embedding. Since $D_{\sqrt S}$ maps $B^{2n}(c)$ onto $B^{2n}(Sc)$ and
+\[
+ D_{\sqrt S}^*\omega_0=S\omega_0,
+ \qquad L_S^*\omega_0=S^{-1}\omega_0,
+\]
+its pullback of $\omega_0$ is exactly $\omega_0$. This proves the proposition.
+\end{proof}

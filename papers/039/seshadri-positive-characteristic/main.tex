@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{xurl}
+\usetikzlibrary{arrows.meta,calc,positioning,patterns}
+
+\DeclareMathOperator{\mult}{mult}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\length}{length}
+
+\title{Maximal multipoint Seshadri constants in positive characteristic}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Let $L$ be an ample line bundle on a smooth integral projective variety $X$ of dimension $n\geq2$ over an algebraically closed field of positive characteristic. We prove that its multipoint Seshadri constant at the geometric generic tuple of $r$ points is $(L^n/r)^{1/n}$ for all sufficiently large $r$. The construction uses Hasse derivatives and flat specialization of finite jet schemes.
+\end{abstract}
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-transfer}
+\input{sections/03-flag}
+\input{sections/04-reshape}
+\input{sections/05-interpolation}
+\input{sections/06-positivity}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{xurl,array,longtable}
+\usetikzlibrary{arrows.meta,positioning,calc,fit}
+\setcounter{tocdepth}{1}
+
+\DeclareMathOperator{\arsinh}{arsinh}
+
+\title{The Mahler conjecture for general convex bodies}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove that the volume product of a convex body in $\mathbb{R}^n$ about its Santal\'o point is at least $(n+1)^{n+1}/(n!)^2$. Equality holds precisely for simplices. We also prove the corresponding sharp functional Mahler inequality.
+\end{abstract}
+
+\maketitle
+
+\input{sections/00-introduction}
+\tableofcontents
+\input{sections/01-cones}
+\input{sections/02-projections}
+\input{sections/03-entropy}
+\input{sections/04-quadratic}
+\input{sections/05-layers}
+\input{sections/06-linear-equality}
+\input{sections/09-consequences}
+\appendix
+\input{sections/07-scalar}
+\input{sections/08-segments}
+
+\printbibliography
+
+\end{document}

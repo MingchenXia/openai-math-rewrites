@@ -1,0 +1,15 @@
+{
+  "source_commit": "3344da59991ed94f9ba711217b29c1d760badfa6",
+  "source_files": {
+    "interpolation-check.py": "825866e15ddd543aea18fa1252c2cf5493fdc87d07cb5a38e8f017b8045f9173",
+    "scalar-analytic.py": "57fe4d11755e09550afcf066071f00311e8205e10b1c29e235d7172d3a4891d7",
+    "scalar_algebra.py": "c5582a03319a062f6097ef1a6ce32c5f6347077079db5f5507dcfbf0d2d062c1",
+    "scalar_identities.py": "bc83a112f1cc1fcf7735d75eedd88f6fd810186b06e485a6a1524c39a9e46a50",
+    "scalar_intervals.py": "dacf03183948d31eaf28e77dd3a812be9dbf317d3a2d165b66a1726fee597744",
+    "segment-auxiliary-intervals.py": "52197770fe0aa14330793e987600521d50f6b1cc39d93f10b91a2907e32ae4f9",
+    "segment-large-check.py": "bc9251fb103c9969ac679a91a5c8ad087f490e99df6ddf6cc0fd27bc6e975bad",
+    "segment-large-tail-audit.py": "946fb71c09a919efa4fc20f3917c45e43db9af541bee622673e9248fa38a8d75",
+    "segment-middle-polynomials.py": "61aec7e76ce1f4c3c26e754faa2ba5c1fa9f0065fd2d90b19f04f52fb2973054",
+    "segment-middle-r-certificate.py": "d1213ec96df38919067b46d926dc6eff2572e7841b7944added5cee5f0bbc30b"
+  }
+}

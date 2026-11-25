@@ -1,0 +1,41 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+Let $S$ be a smooth integral complex projective surface and $L$ an ample line bundle. We use additive notation for tensor powers and put $H=L^2$. For a tuple of distinct points $\mathbf{p}=(p_1,\ldots,p_r)$, the multipoint Seshadri constant is
+\[
+ \varepsilon(S,L;\mathbf{p})
+ =\inf_C\frac{L\cdot C}{\sum_{i=1}^r\mult_{p_i}C},
+\]
+where $C$ ranges over integral curves meeting at least one of the points. If $\pi:Y\to S$ is the blow-up of these points, with exceptional curves $E_1,\ldots,E_r$, the same constant is the largest $\lambda\ge0$ for which $\pi^*L-\lambda\sum_iE_i$ is nef. Here a real divisor class is \emph{nef} if it has nonnegative intersection with every integral curve. The square of this nef class is nonnegative, which gives
+\begin{equation}\label{eq:upper-bound}
+ \varepsilon(S,L;\mathbf{p})\le\sqrt{\frac Hr};
+\end{equation}
+see \cref{lem:sesha-upper}.
+
+Write
+\[
+ U_r=\{(p_1,\ldots,p_r)\in S^r:p_i\ne p_j\text{ for }i\ne j\}.
+\]
+A property holds at \emph{very general} tuples if its failures are contained in a countable union of proper Zariski-closed subsets of $U_r$.
+
+\begin{maintheorem}\label{thm:main}
+For every smooth integral complex projective surface $S$ and every ample line bundle $L$ on $S$, there is an integer $r_0=r_0(S,L)$ with the following property. For each integer $r\ge r_0$, there is a countable union $Z_r$ of proper Zariski-closed subsets of $U_r$, with nonempty complement, such that for every $\mathbf{p}\in U_r\setminus Z_r$ the class
+\[
+ \pi^*L-\sqrt{\frac{L^2}{r}}\sum_{i=1}^r E_i
+\]
+is nef on the blow-up at $\mathbf{p}$. Consequently,
+\[
+ \varepsilon(S,L;\mathbf{p})=\sqrt{\frac{L^2}{r}}.
+\]
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}.
+
+
+The equality is the qualitative Nagata--Biran conjecture for surfaces \cite[Conjecture~4.3]{SyzdekSzemberg2010}. Harbourne obtained the volume bound for sufficiently large $r$ with $rL^2$ a square \cite[Proposition~I.2]{Harbourne2003}. \Cref{cor:fields} extends the present result to uncountable algebraically closed fields of characteristic zero.
+
+It suffices to rule out nonzero sections of $kL$ that vanish to order $m>k\sqrt{H/r}$ at every point of a very general tuple. Indeed, a curve meeting the square-zero boundary class negatively would produce such a section by a rational perturbation and surface Riemann--Roch (\cref{sec:nef}). This reduces nefness against curves of arbitrary multiplicity vectors to equal-order jet tests.
+
+An integral divisor with an ordinary node supplies a bound for the least Taylor exponents of sections. The two branches control the bound through intersection multiplicities. Diagonal slice compression then replaces the bounding quadrilateral by a triangle of area $H/2$. Both changes of section spaces carry an injective jet test on the resulting monomial space back to a test on the surface (\cref{sec:jets,sec:node,subsec:sec-compression}).
+
+For each sufficiently large $r$, we choose the shape of this triangle and an index-$r$ sublattice of $\mathbb{Z}^2$. The dual finite subgroup of $(\mathbb{C}^{\times})^2$ gives the test tuple. Decomposition into its characters reduces the multiplicity bound to an estimate for horizontal slices of the triangle (\cref{sec:lattice}). The subgroup is chosen before the orders $k,m$ are fixed. The transferred tests are open rank conditions, so they hold simultaneously outside one countable union of proper closed sets.

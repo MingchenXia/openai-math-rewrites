@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{flafter,xurl,needspace}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+\DeclareMathOperator{\conv}{conv}
+
+\title{The symmetric Mahler conjecture and its equality cases}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove that every origin-symmetric convex body in $\mathbb{R}^n$ has volume product at least $4^n/n!$, with equality exactly for invertible linear images of Hanner polytopes. We also obtain the sharp even functional Mahler inequality.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/convex-preliminaries}
+\input{sections/lens}
+\input{sections/holomorphic-mass}
+\input{sections/feasibility}
+\input{sections/simplex}
+\input{sections/zero-deficit}
+\input{sections/median}
+
+\printbibliography
+
+\end{document}

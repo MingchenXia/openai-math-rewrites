@@ -1,0 +1,46 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{bm,xurl}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\newcommand{\pairing}[2]{\langle #1,#2\rangle}
+
+\title{Symplectic balls in symmetric polar products}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+For every origin-symmetric convex body $K$ in $\mathbb{R}^n$, $n\geq2$, the Gromov width of $\operatorname{int}K\times\operatorname{int}K^\circ$ is $4$. We construct symplectic embeddings of balls of every capacity below $4$. The volume comparison gives the symmetric Mahler inequality.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/ball}
+\input{sections/planar}
+\input{sections/realization}
+\input{sections/approximation}
+
+\printbibliography
+
+\end{document}

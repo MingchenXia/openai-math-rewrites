@@ -1,0 +1,57 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+A \emph{convex body} in $\mathbb{R}^n$ is a compact convex set with nonempty interior.  We write $|A|$ for the $n$-dimensional Lebesgue volume of a measurable set $A$, and $\langle\cdot,\cdot\rangle$ for the Euclidean inner product. For $z\in\operatorname{int}K$, define
+\[
+ (K-z)^\circ
+ =\{y\in\mathbb{R}^n:\langle y,x-z\rangle\le1\text{ for every }x\in K\}.
+\]
+The minimum of $|(K-z)^\circ|$ is attained at a unique point $s(K)\in\operatorname{int}K$, the \emph{Santal\'o point} (a proof is included in \cref{sec:01-cones}). The volume product is
+\[
+ P(K)=|K|\,|(K-s(K))^\circ|
+     =\inf_{z\in\operatorname{int}K}|K|\,|(K-z)^\circ|.
+\]
+It is invariant under invertible affine maps. A simplex is the convex hull of $n+1$ affinely independent points.
+
+\begin{maintheorem}\label{thm:mahler}
+For every integer $n\ge1$ and every convex body $K\subset\mathbb{R}^n$,
+\[
+                 P(K)\ge\frac{(n+1)^{n+1}}{(n!)^2}.
+\]
+Equality holds if and only if $K$ is a simplex.
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}.
+
+In dimension two, Mahler proved the result for polygons and Meyer gave the equality classification for all convex bodies \cite{Mahler1938,Meyer1991}. The affine center used throughout is the Santal\'o point \cite{Santalo1949}.
+
+\subsection{Dual cones and Gaussian projections}
+
+For $z_0\in\operatorname{int}K$, take the closed cone $C$ over the slice $(K-z_0)\times\{1\}$, with positive dual cone $D$, and set $m=n+1$. For $V\in\operatorname{int}D$, its Laplace integral on $C$ is $\chi_C(V)=\int_C\ee^{-\langle V,x\rangle}\,\rd x$. Define $\chi_D(U)$ for $U\in\operatorname{int}C$ in the same way. The cone formulation reduces the volume estimate to $\chi_C(V)\chi_D(U)\geq1$ when $\langle U,V\rangle=m$ (\cref{sec:01-cones}).
+
+Moreau's decomposition produces paired nearest-point projections onto $C$ and $D$ \cite{Moreau1962}. We choose the Gaussian covariance and a bias at each real layer so that the primal projections have prescribed means on the ray through $U$. Integration in the layer parameter gives two maps into the dual cones. Change of variables bounds the Laplace integrals by their Jacobians, reducing the proof to an upper estimate for an entropy expression (\cref{sec:02-projections,sec:03-entropy}).
+
+The derivatives of the projections are a family of symmetric matrices. A Gaussian decomposition retains their common linear part and bounds the higher-degree contributions by a nonnegative defect. Comparison with spectral thresholds of the linear Gaussian matrix turns the remaining estimate into scalar inequalities, including one on each interval between two eigenvalues (\cref{sec:04-quadratic,sec:05-layers,sec:06-linear-equality}). Strictness on nontrivial intervals forces the coefficient matrices to commute in the equality case. The projection then acts coordinatewise in a fixed basis, so the cone is a product of half-lines and its bounded section is a simplex.
+
+The scalar input is stated in \cref{prop:scalar-input}. Its proofs in \cref{sec:07-scalar,sec:08-segments} give analytic estimates for the tails and finite rational certificates on bounded ranges. The certificates and their interpolation estimates together cover the full parameter domains.
+
+\subsection*{Functional Mahler inequality}
+
+The functional version replaces a convex body by a log-concave function and polarity by convex conjugation. For a proper lower-semicontinuous convex function $\varphi:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$, define its Fenchel--Legendre transform by
+\[
+ \varphi^*(y)=\sup_{x\in\mathbb{R}^n}\{\langle x,y\rangle-\varphi(x)\},
+ \qquad y\in\mathbb{R}^n.
+\]
+We use the convention $\ee^{-\infty}=0$.
+
+\begin{corollary}\label{cor:functional-mahler}
+For every integer $n\ge1$ and every proper lower-semicontinuous convex function $\varphi:\mathbb{R}^n\to\mathbb{R}\cup\{+\infty\}$ such that $0<\int_{\mathbb{R}^n}\ee^{-\varphi(x)}\,\rd x<\infty$,
+\[
+ \left(\int_{\mathbb{R}^n}\ee^{-\varphi(x)}\,\rd x\right)
+ \left(\int_{\mathbb{R}^n}\ee^{-\varphi^*(y)}\,\rd y\right)\ge \ee^n.
+\]
+The second integral is allowed to be infinite, in which case the inequality is immediate.
+\end{corollary}
+
+
+The proof and an extremizing potential are given in \cref{sec:consequences}. The geometric-to-functional implication uses the volume bound in all dimensions \cite[Proposition~2(a)]{FradeliziMeyer2008}. \Cref{cor:entropy-transport} gives the corresponding entropy--transport inequality for moment measures.

@@ -1,0 +1,135 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usetikzlibrary{arrows.meta,positioning}
+\setcounter{tocdepth}{1}
+
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+
+\title{Semialgebraic universal covers of normal projective varieties}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove that the universal cover of a connected normal projective complex variety admits a semialgebraic open presentation in a projective variety if and only if it is a product of a bounded symmetric domain, an affine space, and a simply connected normal projective variety. The universal cover is quasi-projective precisely when the bounded symmetric factor is a point.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:introduction}
+
+Let $X$ be a connected normal projective complex variety. We use the universal cover in the classical topology. A semialgebraic open presentation of a complex space is a biholomorphism with an open subset of a projective variety that is semialgebraic in real and imaginary coordinates in its algebraic charts. Openness refers to the complex topology. A bounded symmetric domain has at every point a holomorphic involution with that point as an isolated fixed point. We allow the zero-dimensional domain.
+
+\begin{maintheorem}\label{thm:main}
+Let $X$ be a connected normal projective variety over $\mathbb{C}$, and let $\widetilde X$ be its universal cover. The following conditions are equivalent:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $\widetilde X$ is biholomorphic to a semialgebraic open subset
+of a projective variety.
+\item There are an integer $m\geq0$, a bounded symmetric domain $D$,
+and a simply connected normal projective variety $F$ such that
+\[
+                 \widetilde X\simeq D\times\mathbb{C}^m\times F.
+\]
+\end{enumerate}
+A point is allowed as either $D$ or $F$.
+\end{maintheorem}
+
+This is the classification conjectured by Koll\'ar and Pardon \cite[Conjecture~2]{KollarPardon2012}. This exposition follows \cite{OpenAIMathSource}. The proof uses the abelianity theorem for special compact K\"ahler manifolds \cite[Theorem~1.1]{SpecialAbelianity}: the ordinary fundamental group of a smooth connected compact special K\"ahler manifold is virtually abelian. The input applies to the compact special fibres of Campana's core. The classification also identifies the quasi-projective covers and gives the finite étale abelian-cover conclusion when $X$ is smooth and its universal cover is affine space (\cref{sec:quasiprojective}).
+
+\subsection{The transverse quotient}
+
+Write $U=\widetilde X$, and denote by $V\to U$ the restriction of a functorial projective resolution of its semialgebraic presentation. At successive boundary faces of $V$, the null directions of the Levi form yield complex plaques with projective closures. Scaling transversely to the plaques produces a finite tower of quadratic inequalities. Two uniformity statements allow the iteration. The holes in the projective fibres lie in a divisor defined over a full parameter box, and triangular recentering maps control the parameters along bounded paths. Attached discs supply the resulting upper containment for the limits of those paths (\cref{sec:prep-section,sec:loc-section,sec:win-section}).
+
+In each scaled region, a bounded plurisubharmonic test on the projective fibres with analytic holes is constant along those fibres. Strict plurisubharmonicity in the parameters then identifies intersecting fibres. Holomorphic cutoff functions control the boundaries of the translated charts, and compactness of the inverse charts gives a global quotient $V\to M$, with $M$ biholomorphic to the bounded realization of the limiting domain. The quotient is constant on the compact fibres of $V\to U$, hence descends to $U$. The preparation of the projective families is used here to retain normal compact fibres on $U$ (\cref{sec:quo-section}).
+
+\subsection{The deck action and the Albanese map}
+
+Let $\Gamma=\pi_1(X)$, let $\Lambda$ be its image in $\Aut(M)$, and let $K$ be the kernel. Core fibres and compact special abelianity first give countable transverse images. Extension across the orbifold charts of the projective families makes the images locally finite, which forces $\Lambda$ to be discrete. The Nadel--Frankel splitting and the spanning vector fields on $M$ identify it as a bounded symmetric domain. A second application of compact special abelianity, to the fibre group, makes $K$ virtually abelian (\cref{sec:grp-section}).
+
+After replacing $K$ by a characteristic finite-index free-abelian subgroup, the relative Albanese construction gives the affine factor. More precisely, the full Albanese pullback gives a proper map $U\to M\times\mathbb{C}^m$ with simply connected normal projective fibres. Polarized fibre isomorphism classes define invariant semialgebraic loci in the projective parameter space. The topological rigidity of the family forces each class to be dense in the base, so there is a single class. Local holomorphic triviality and the Oka principle on the contractible Stein base then give the product (\cref{sec:cmp-section}). The three maps are shown in \cref{fig:classification}.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/proof-overview}
+\caption{The geometric maps in the proof. The top row constructs the
+intrinsic quotient on a resolution and descends it to the normal
+cover. The bottom row separates its affine and compact directions.
+Solid arrows are geometric maps; the dashed arrow records the
+theorem identifying the same base as symmetric. After the quotient
+is constructed, compact special abelianity is used both to prove
+transverse discreteness and to control the kernel $K$ needed for $j$.}
+\label{fig:classification}
+\end{figure}
+
+\subsection{Conventions}
+All projective varieties are reduced and irreducible unless stated otherwise; a connected normal variety has one irreducible component. A domain is connected and open. Local pseudoconvexity means local Steinness at the boundary in the indicated ambient complex manifold. Families with projective fibres may be analytic pullbacks of algebraic families; bounded algebraic data in their projective variables are specified when needed. Generic real parameters are chosen on relatively compact boxes after removing the exceptional subanalytic sets of the particular construction. The precise convention, including countable families of tests, is \cref{def:prep-generic}.
+
+\tableofcontents
+
+\input{sections/preliminaries}
+\input{sections/localization}
+\input{sections/windows}
+\input{sections/quotient}
+\input{sections/groups}
+\input{sections/compact}
+
+\section{Assembly of the classification}\label{sec:assembly}
+Starting from condition~\textup{(i)} of \cref{thm:main}, take a functorial projective resolution of the normal uniformizing model. The quotient construction of \cref{thm:quo-projection} gives the intrinsic transverse domain and its equivariant projection, including the descended normal-source family. \Cref{thm:grp-discrete-symmetric} proves that the transverse deck action is discrete, makes it free after the indicated finite-index passage, and identifies its simply connected domain with a bounded symmetric domain. The fiber kernel is virtually abelian by \cref{thm:grp-kernel-abelian}. \Cref{prop:cmp-product} then separates the affine and compact factors and proves condition~\textup{(ii)}, with $D=M$ and $m=a$ in its notation. The converse is \cref{prop:cmp-converse}. Every passage to finite index preserves the universal cover of $X$.
+
+\begin{corollary}
+\label{cor:remmert-semialgebraic}
+Let $X$ be a connected normal projective complex variety whose ordinary universal cover $U$ has a semialgebraic projective-open presentation. Write $U\simeq B\times F$, where $B=D\times\mathbb{C}^m$, as in \cref{thm:main}. Then $U$ is holomorphically convex and the projection $p:U\to B$ is its Remmert reduction: $B$ is Stein, $p$ is proper with connected compact normal projective fibres, and the canonical map $\mathcal{O}_B\to p_*\mathcal{O}_U$ is an isomorphism. Moreover, $U$ is Stein if and only if $F$ is a point.
+\end{corollary}
+
+\begin{proof}
+The base $B$ is the Stein base $T$ in the proof of \cref{prop:cmp-affine-base}. The factor $F$ is connected, normal and projective, possibly singular. Since $F$ is compact, $p$ is proper and surjective. Holomorphic functions on $F$ are constant by \cite[Corollary~II.5.8]{DemaillyCADG}. Fix $z_0\in F$. For every open $V\subset B$ and $h\in\mathcal{O}_U(V\times F)$, fibrewise constancy gives $h(b,z)=h(b,z_0)$. Restriction along the holomorphic section $b\mapsto(b,z_0)$ therefore inverts pullback, proving $\mathcal{O}_B\simeq p_*\mathcal{O}_U$; equality on points suffices because $U$ is reduced. For every compact $K\subset U$, this gives
+\[
+ \widehat K_{\mathcal{O}(U)}
+   =p^{-1}\bigl(\widehat{p(K)}_{\mathcal{O}(B)}\bigr).
+\]
+The right side is compact since $B$ is Stein and $p$ is proper. Thus $U$ is holomorphically convex, and the proper Stein-target map with this sheaf identity is its Remmert reduction. If $F$ is a point, then $U\simeq B$ is Stein; if $F$ has two distinct points, global holomorphic functions on $U$ cannot separate the corresponding points of a fibre, so $U$ is not Stein. A connected zero-dimensional normal projective variety is a single reduced point, so this criterion includes the zero-dimensional case.
+\end{proof}
+
+\begin{corollary}
+\label{cor:singer-semialgebraic}
+Let $X$ be a smooth connected closed aspherical projective complex $n$-fold whose ordinary universal cover has a semialgebraic projective-open presentation. Its $L^2$-Betti numbers, computed from the reduced $L^2$-cohomology of the universal cover, satisfy
+\[
+                 b_j^{(2)}(X)=0\qquad(j\geq0,\ j\ne n).
+\]
+If $m>0$ for the affine factor in the product constructed in the proof of \cref{thm:main}, then $b_j^{(2)}(X)=0$ for every $j\geq0$.
+\end{corollary}
+
+\begin{proof}
+The case $n=0$ is immediate. Since $\widetilde X$ is contractible, so is $F$: the other two factors are contractible. A positive-dimensional normal projective variety has a nonzero top fundamental class. Hence $F$ is a point and $\dim_{\mathbb{C}}D=n-m$.
+
+Put $\Gamma=\pi_1(X')$ for the finite cover $X'\to X$ used in \cref{sec:cmp-section}. \Cref{lem:cmp-characteristic,lem:cmp-albanese}, with $m=a$ as above, give $K'\lhd\Gamma$ with $K'\simeq\mathbb{Z}^{2m}$. If $m>0$, this is an infinite normal amenable subgroup, so the Cheeger--Gromov theorem \cite[Theorem~0.3(3) and the proof of Corollary~0.6]{CheegerGromov1986} makes every group $L^2$-Betti number of $\Gamma$ vanish. Asphericity identifies these with $b_j^{(2)}(X')$, and finite-cover proportionality gives $b_j^{(2)}(X')=[\pi_1(X):\Gamma]b_j^{(2)}(X)$, proving the claim.
+
+If $m=0$, then $\widetilde X\simeq D$ has real dimension $2n$. As in the proof of \cref{thm:grp-discrete-symmetric}, its Bergman metric is complete and symmetric of noncompact type. The deck group acts freely and cocompactly by Bergman isometries. Olbrich's theorem on the universal symmetric space \cite[Proposition~1.2 and \S4]{Olbrich2002} gives $\ker\Delta_j(D)=0$ for $j\ne n$. The cocompact $L^2$-de Rham identification of $b_j^{(2)}(X)$ with the von Neumann dimension of this harmonic kernel completes the proof.
+\end{proof}
+
+\input{sections/quasiprojective}
+
+\printbibliography
+
+\end{document}

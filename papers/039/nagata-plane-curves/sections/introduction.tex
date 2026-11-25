@@ -1,0 +1,22 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\section{Introduction}\label{sec:introduction}
+
+Let $U_r\subset (\mathbb{P}^2_{\mathbb{C}})^r$ be the open set of ordered tuples of distinct points. An effective plane curve of degree $d$ is the zero divisor of a nonzero homogeneous form, and its multiplicity at a point is the order of the form in the regular local ring. Nagata conjectured the following strict inequality and proved it when $r$ is a square at least $16$ \cite{Nagata1959,Nagata1965}.
+
+\begin{maintheorem}\label{thm:main}
+For every integer $r\ge10$, there is a countable union $E_r$ of proper Zariski-closed subsets of $U_r$, with nonempty complement, such that the following holds for every tuple $(p_1,\ldots,p_r)\notin E_r$. If $C$ is a nonzero effective plane curve of degree $d\ge1$ and $m_1,\ldots,m_r\in\mathbb{Z}_{\ge0}$ satisfy $\mult_{p_i}C\ge m_i$, then
+\[
+ d\sqrt r>\sum_{i=1}^r m_i.
+\]
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}. The exceptional set is chosen simultaneously for all degrees and all multiplicity vectors, and the argument allows repeated components. The bound begins at $r=10$: a cubic through nine prescribed points exists by counting the coefficients of a cubic. On the blowup, the theorem yields a square-zero class that is positive on every integral curve. Its exceptional coefficient is the multipoint Seshadri constant $1/\sqrt r$. These consequences and the extension to uncountable algebraically closed fields of characteristic zero are proved in \cref{sec:consequences}.
+
+Closed incidence loci and a product over cyclic permutations reduce the theorem to an equal-multiplicity system that exists at every tuple. Specialization to the normal bundle of a smooth plane curve restricts the possible coefficients in that system. For square $r$, the leading coefficients already give the contradiction (\cref{sec:reductions}).
+
+For nonsquare $r$, nine points on a smooth cubic constrain the coefficient divisors on the cubic. The remaining $q=r-9$ points collide on a fixed normal surface. After $b$ derivatives in the fibre direction, where $0\leq b<m$ and $m$ is the common multiplicity, the collision imposes order $q(m-b)$ in the base direction. A degeneration of the resulting theta bases then gives a limiting matrix with entries $K^\ell j^b$, where $(j,K)$ indexes a basis element, $j$ is its fibre degree and $0\leq\ell<q(m-b)$ (\cref{sec:elliptic,sec:limits}).
+
+The last step is a rank test on the exponent pairs. Group the pairs by $K$. Interpolation successively isolates the rows if each has at most $m$ points and at most $q(m-t+1)$ rows have at least $t$ points. The strict numerical gap $d/m<\sqrt r$ for nonsquare $r$ gives these inequalities after taking a power of the original form. The limiting matrix is therefore injective, whereas the collision forces a kernel on each nearby smooth cubic (\cref{sec:interpolation}).
+
+The specialization uses the geometry of plane linear systems and their infinitesimal limits as developed by Ciliberto--Miranda and Evain \cite{CM1998,Evain2007}. The final matrix uses the evaluation interpretation of derivative matrices in Dumnicki's diagram method \cite[proof of Proposition~13]{Dumnicki2007}. The theta functions are introduced where the normal surface is constructed.

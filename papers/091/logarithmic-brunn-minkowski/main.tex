@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\DeclareMathOperator{\supp}{supp}
+
+\title{The logarithmic Brunn--Minkowski conjecture}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We prove the logarithmic Brunn--Minkowski inequality for origin-symmetric convex bodies in every dimension. It implies the symmetric $L_p$ Brunn--Minkowski inequality for $0<p<1$ and, by the transfer theorem of Saroglou, the scalar-dilation $(B)$-conjecture for even log-concave Radon measures.
+\end{abstract}
+
+\maketitle
+
+
+\input{introduction}
+\input{reduction}
+\input{moment}
+\input{identities}
+\input{density}
+\input{tensor}
+\input{variance}
+\input{measure}
+
+\printbibliography
+
+\end{document}

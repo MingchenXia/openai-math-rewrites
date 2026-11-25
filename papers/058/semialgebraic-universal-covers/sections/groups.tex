@@ -1,0 +1,202 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{The transverse action and the fibre group}
+\label{sec:grp-section}
+
+We use the intrinsic projection and the full incidence charts supplied by \cref{thm:quo-projection}.  Write
+\[
+ p:V\longrightarrow X^+,\qquad f:V\longrightarrow M,
+ \qquad \rho:\Gamma\longrightarrow\operatorname{Aut}(M),
+ \qquad \Lambda=\rho(\Gamma).
+\]
+Here $p$ is a connected regular covering of a smooth projective manifold, with group $\Gamma$, and $f$ is an equivariant surjective holomorphic submersion with connected fibres.  As in the construction, $\Gamma=\pi_1(X)$: the covering of $X^+$ is pulled back from the universal covering of the original normal projective variety $X$. The manifold $M$ is contractible and biholomorphic to a bounded domain.  The complete real holomorphic vector fields belonging to $\operatorname{Aut}(M)^0$ have evaluations spanning $T_mM$ over $\mathbb{C}$, for every $m\in M$.
+
+The argument uses all the points represented in an incidence chart. Over a connected box $B\subset M$, we have a smooth projective family $q:Q\to B$ with connected fibres, a proper analytic subset $D\subset Q$ contained in a relative divisor, and an open set $G\supset Q\setminus D$. The incidence map $e:G\to f^{-1}(B)$ is surjective and generically of full rank, and $f\circ e=q|_G$. The extension argument starts off a divisor containing $D$ and then uses the whole of $G$. Each individual fibre of $f$ also admits a smooth projective compactification with analytic complement.
+
+\subsection{The core and the external inputs}
+
+A smooth compact K\"ahler manifold $Z$ is \emph{special} if it has no Bogomolov sheaf: there is no line bundle $L$ with a nonzero morphism $L\to\Omega_Z^r$ and $\kappa(Z,L)=r>0$.  We use the following two consequences of Campana's core theory~\cite{Campana2004}. There is a projective modification $r:Z'\to Z$ and a holomorphic core $c:Z'\to C$ whose very general smooth connected fibre is special. Its orbifold base is of general type unless $C$ is a point.  Moreover, if $T$ is a connected complex manifold, $E$ is a reduced divisor, and $a:T\setminus E\dashrightarrow Z$ is meromorphic, then $c\circ r^{-1}\circ a$ extends meromorphically across $E$ whenever this composition has maximal rank $\dim C$ somewhere.  This last statement is the factorized form of the orbifold Kobayashi--Ochiai theorem, namely \cite[Theorem~8.2]{Campana2004}.  It concerns the orbifold core; the underlying variety $C$ need not itself be of general type.  If $C$ is a point the extension assertion is immediate.
+
+The other input is the compact special abelianity theorem of OpenAI, \emph{The abelianity conjecture for special compact K\"ahler manifolds} \cite[Theorem~1.1]{SpecialAbelianity}:
+\begin{equation}\label{eq:grp-abelianity-input}
+ Z\text{ smooth, compact K\"ahler and special}
+ \quad\Longrightarrow\quad \pi_1(Z)\text{ virtually abelian}.
+\end{equation}
+The conclusion concerns the entire ordinary fundamental group and has no linearity or residual-finiteness hypothesis. We apply it to smooth connected compact special core fibres, and to the smooth compact manifold itself when its core is a point. All further conclusions about the transverse action and its kernel are proved below.
+
+\subsection{A Liouville lemma for abelian covers}
+
+\begin{lemma}\label{lem:grp-liouville}
+Let $a:W\to Z$ be a connected regular covering of a compact connected K\"ahler manifold. If its deck group is virtually abelian, every bounded holomorphic function on $W$ is constant.
+\end{lemma}
+
+\begin{proof}
+Choose a finite-index abelian subgroup $A$ of the deck group. The quotient $W/A$ is a finite cover of $Z$, hence compact K\"ahler. Equip $W$ with the pullback of a K\"ahler metric on $W/A$. As $W\to W/A$ is a regular Riemannian covering with nilpotent deck group, the Lyons--Sullivan theorem \cite[Theorem~1, p.~300]{LyonsSullivan1984} says that every positive harmonic function on $W$ is constant. The real and imaginary parts of a bounded holomorphic function are harmonic and become positive after adding constants.
+\end{proof}
+
+\subsection{From countable levels to locally finite parameters}
+
+\begin{lemma}\label{lem:grp-finite-level-projection}
+Let $q:Q\to B$ be a proper holomorphic map from a complex manifold, let $h:Q\dashrightarrow C$ be a meromorphic map to a projective variety, and let $G_0\subset Q$ be open with $h|_{G_0}$ holomorphic.  Fix $s\in C$. If
+\[
+ q\bigl(G_0\cap h^{-1}(s)\bigr)
+\]
+is countable, it is locally finite in $B$.
+\end{lemma}
+
+\begin{proof}
+On the proper graph modification $\tau:\widehat Q\to Q$ of $h$, let $\widehat h$ be the induced holomorphic map and put $\widehat q=q\circ\tau$. Over $G_0$ the graph is the ordinary graph of $h$. Each irreducible component of $\widehat h^{-1}(s)$ meeting $\tau^{-1}(G_0)$ has a nonempty open piece with countable $\widehat q$-image. A nonconstant holomorphic map on a connected smooth patch has uncountable image. Hence $\widehat q$ is constant on such a patch in the regular locus of the component, and the identity theorem makes it constant on the whole component.
+
+For any compact neighborhood in $B$, its inverse image under $\widehat q$ is compact. Only finitely many irreducible components of the analytic set $\widehat h^{-1}(s)$ meet this inverse image, by local finiteness of irreducible components. Every attained parameter in the neighborhood comes from one of these components meeting $\tau^{-1}(G_0)$ and is its constant value.
+\end{proof}
+
+Apply the core construction to $X^+$.  Choose a smooth projective modification $r:Z\to X^+$ and a holomorphic core $c:Z\to C$.  There is a Zariski open subset $X^\circ\subset X^+$ over which $r$ is an isomorphism, the induced core map is holomorphic, and its restriction has full rank.  Shrink this open set if necessary so that very general fibres meet it.  For a very general $s\in C$ put
+\[
+ F_s=c^{-1}(s),\qquad
+ F_s^\circ=F_s\cap r^{-1}(X^\circ),\qquad
+ D_s=f\bigl(p^{-1}(r(F_s^\circ))\bigr)\subset M.
+\]
+The variety $F_s$ is smooth, connected, projective and special.
+
+\begin{lemma}\label{lem:grp-countable-core-level}
+For every such $s$, the set $D_s$ is countable and locally finite in $M$. The union of these sets, as $s$ runs through very general values, is dense in $M$.
+\end{lemma}
+
+\begin{proof}
+Pull the regular covering $p$ back along $F_s\to X^+$. Each connected component of the pullback is a regular cover of $F_s$ with deck group the image of $\pi_1(F_s)$ in $\Gamma$, up to the basepoint identification.  That image is virtually abelian by \eqref{eq:grp-abelianity-input}.  The composite of the lifted map to $V$ with each bounded coordinate of $f$ is constant by \cref{lem:grp-liouville}.  Hence $f$ is constant on each connected component of the pullback.  There are at most countably many components, since the fibre of $p$ is countable.  This proves countability of $D_s$.
+
+Fix an incidence chart $q:Q\to B$, $e:G\to f^{-1}(B)$, and choose a reduced divisor $E$ containing $D$. Away from $E$, the map $p\circ e$ is defined and has full rank on a nonempty open set, by the generic full rank of $e$ and the fact that $p$ is a covering. Its image meets the dense open set $X^\circ$. The composition with $c\circ r^{-1}$ has rank $\dim C$ at a point above $X^\circ$, so the core extension theorem gives a meromorphic map $h:Q\dashrightarrow C$. On $G$ it agrees meromorphically with $c\circ r^{-1}\circ p\circ e$, by uniqueness on the dense open complement of $E$. Thus it is holomorphic on
+\[
+ G_0=e^{-1}(p^{-1}(X^\circ))\subset G
+\]
+and gives the ordinary core value there, including at points of $G_0\cap E$.
+
+Surjectivity of $e$ on $f^{-1}(B)$ gives the equality
+\begin{equation}\label{eq:grp-full-incidence-level}
+ D_s\cap B=q\bigl(G_0\cap h^{-1}(s)\bigr).
+\end{equation}
+Indeed, a point of $D_s\cap B$ has a lift in $f^{-1}(B)$ projecting to the ordinary core fibre, and every such lift has a representative in $G$. Conversely a representative in $G_0\cap h^{-1}(s)$ has projection in that fibre. By countability and \cref{lem:grp-finite-level-projection}, $D_s$ is locally finite.
+
+In $X^\circ$, the points with very general core value are dense by the submersion property and Baire's theorem on the core base. Their inverse image under the covering is dense in $V$ because $X^\circ$ is dense in $X^+$, so its image under $f$ is dense in $M$. This image is the union of the sets $D_s$. If $C$ is a point, the same argument gives a single dense, locally finite subset of $M$, which then equals $M$. In that case connectedness makes $M$ a point.
+\end{proof}
+
+\begin{proposition}\label{prop:grp-discrete}
+The image $\Lambda$ is discrete in $\operatorname{Aut}(M)$ and acts cocompactly on $M$.
+\end{proposition}
+
+\begin{proof}
+The group of automorphisms of a bounded domain is a real Lie group \cite[Proposition~3.1 and Theorem~6.2]{Kobayashi1967} and acts properly \cite[\S2, Propositions~2--3]{BlanchardCartan1954}.  Let $H$ be the closure of $\Lambda$ in this group. For every very general $s$, the set $D_s$ is $\Lambda$-invariant: deck transformations preserve $p$, and $f$ is equivariant.  A locally finite subset of a manifold is closed, so $D_s$ is also $H$-invariant by continuity.  The orbit under the connected group $H^0$ of any point of $D_s$ is connected and lies in a discrete set.  It is a point. Thus $H^0$ fixes the dense union of the $D_s$ pointwise and consequently fixes $M$ pointwise.  It is the trivial subgroup.  As a closed subgroup of a Lie group, $H$ is a Lie group \cite[Chapter~II, \S III, no.~27]{CartanLie1952}; zero-dimensional Lie groups are discrete.  This proves the assertion for $\Lambda$.
+
+The equivariant surjection $f$ induces a continuous surjection $X^+=V/\Gamma\to M/\Lambda$.  Its source is compact, so the quotient is compact.
+\end{proof}
+
+\subsection{Removing stabilizers and identifying the domain}
+
+\begin{lemma}\label{lem:grp-free-finite-index}
+There is a torsion-free finite-index subgroup $\Lambda_1\subset\Lambda$ acting freely on $M$.  Its inverse image in $\Gamma$ corresponds to a connected finite cover of the original normal projective variety $X$.
+\end{lemma}
+
+\begin{proof}
+The group $\Gamma$ is finitely generated, being a quotient of $\pi_1(X^+)$, and hence so is $\Lambda$. Let $\mathfrak{g}$ be the real Lie algebra of $\operatorname{Aut}(M)$. Selberg's lemma \cite[Lemma~8]{Selberg1960}, in the matrix-group form recalled in \cite[p.~435]{Wolf1968}, applied to the finitely generated linear group $\operatorname{Ad}(\Lambda)\subset\operatorname{GL}(\mathfrak{g})$ gives a torsion-free subgroup $L$ of finite index.  Set
+\[
+ \Lambda_1=(\operatorname{Ad}|_\Lambda)^{-1}(L).
+\]
+For $m\in M$, properness and discreteness make $(\Lambda_1)_m$ finite. Its image in the torsion-free group $L$ is trivial. If $\lambda\in(\Lambda_1)_m$, therefore, $\lambda_*\xi=\xi$ for every complete vector field $\xi\in\mathfrak{g}$.  Evaluating at the fixed point gives
+\[
+ d\lambda_m\bigl(\xi(m)\bigr)=\xi(m).
+\]
+The complex spanning property and complex linearity of the derivative give $d\lambda_m=1$.  A finite-order holomorphic automorphism fixing a point with identity derivative is the identity: if its order is $k$ and $z$ is a local coordinate system centered there, then $k^{-1}\sum_{j=0}^{k-1}z\circ\lambda^j$ is an invariant coordinate system, since its derivative is the identity.  The inverse function theorem and analytic continuation prove $\lambda=1$ on $M$. Thus all stabilizers are trivial.  No faithfulness of the full adjoint representation has been assumed.
+
+The subgroup $\Lambda_1$ is also torsion-free.  Indeed, lift a finite triangulation of the compact smooth quotient $M/\Lambda_1$ to its contractible universal cover.  Its cellular chains form a finite-length free resolution of $\mathbb{Z}$ over $\mathbb{Z}[\Lambda_1]$.  Restriction to a subgroup of prime order would remain a free resolution of finite length, contrary to the nonzero cohomology in arbitrarily high even degrees of a finite cyclic group.  Every nontrivial finite-order element has a power of prime order, so no such element exists.
+
+The subgroup $\rho^{-1}(\Lambda_1)$ has finite index in $\Gamma$. The corresponding connected topological covering of $X$ is a finite unramified analytic covering. The proper-base Riemann existence theorem \cite[XII, Corollary~4.6]{SGA1} algebraizes it. Pullback of an ample bundle under the resulting finite morphism is ample \cite[Tag~\href{https://stacks.math.columbia.edu/tag/0B5V}{0B5V}]{Stacks}, so the cover is projective; its analytic covering charts make it normal.  This justifies the simultaneous finite-cover replacement.
+\end{proof}
+
+\begin{theorem}\label{thm:grp-discrete-symmetric}
+Under the intrinsic-projection hypotheses recalled above, the transverse image is discrete and cocompact.  After a finite cover it acts freely, and $M$ is biholomorphic to a bounded symmetric domain, with a point allowed.
+\end{theorem}
+
+\begin{proof}
+Discreteness and the free finite-index action were just proved. Replace $\Lambda$ by the subgroup supplied by \cref{lem:grp-free-finite-index} and put $B=M/\Lambda$. The intrinsic Bergman kernel of square-integrable canonical forms on the bounded realization of $M$ is everywhere positive, and its logarithm has positive definite complex Hessian.  The reciprocal kernel is a Hermitian metric on $K_M$; invariance under biholomorphisms makes it descend to a metric on $K_B$ with positive curvature.  Consequently $K_B$ is ample by the Kodaira embedding theorem \cite[\S\S1--2; see also \S4]{Kodaira1954PNAS}, $B$ is projective, and $c_1(B)<0$. In complex dimension one the same positivity-to-ampleness step follows from Riemann--Roch; the point case is immediate.
+
+The manifold $B$ is compact and aspherical because its universal cover $M$ is contractible.  The Nadel--Frankel splitting theorem in the aspherical form of \cite[Theorem~1.10]{FarbWeinberger2008} applies. It gives, on universal covers, a holomorphic decomposition
+\[
+ M\simeq D_{\mathrm{sym}}\times R,
+\]
+where $D_{\mathrm{sym}}$ is a bounded symmetric domain and $\operatorname{Aut}(R)$ is discrete.  The cited statement is obtained from a product decomposition of a finite cover of $B$; this does not change its universal cover.  Its Hermitian locally symmetric factor is of noncompact type, as its canonical bundle is ample, so its simply connected cover has the bounded symmetric realization used here.
+
+We explain why the identity automorphisms of $M$ cannot mix these two factors.  The Bergman metric of $M$ descends to compact $B$, so is complete.  On a product, Fubini's theorem identifies the Hilbert space of square-integrable canonical forms with the Hilbert tensor product of the two factor spaces.  Taking product orthonormal bases gives the product formula for the kernels.  It follows that
+\[
+ g_M=g_{D_{\mathrm{sym}}}\oplus g_R.
+\]
+Both factor metrics are positive definite, since $g_M$ is, and complete, since a factor slice is a closed totally geodesic submanifold of this complete product.  Both factors are simply connected, since $M$ is.
+
+There is no Euclidean de Rham factor in $M$.  Otherwise its parallel vector fields span a nonzero parallel real subspace preserved by the parallel complex structure, hence yield a holomorphic Euclidean factor $\mathbb{C}^a$, $a>0$.  Restricting a bounded realization of $M$ to a complex line in this factor contradicts Liouville's theorem.  Uniqueness of the non-Euclidean irreducible de Rham factors \cite[\S7, Th\'eor\`eme~III]{DeRham1952} now implies that every isometry in the identity component preserves each factor distribution, and in particular the two displayed factor foliations.  Thus every element of $\operatorname{Aut}(M)^0$ acts as a product automorphism. Its component on $R$ is constant as a function of the group element, because $\operatorname{Aut}(R)$ is discrete; it is the identity. Every vector field from this identity group therefore has zero $R$-component.  The complex spanning property forces $\dim R=0$. Hence $M\simeq D_{\mathrm{sym}}$.
+\end{proof}
+
+\subsection{Compactifiable covers and finite-index fibre images}
+
+\begin{lemma}\label{lem:grp-compactifiable-cover}
+Let $a:U\to N$ be a connected regular covering of a smooth connected projective manifold, with deck group $K$.  Suppose $U$ is a Zariski open subset, in the analytic sense, of a smooth projective manifold $\overline U$. Then, using \eqref{eq:grp-abelianity-input}, the group $K$ is virtually abelian.
+\end{lemma}
+
+\begin{proof}
+Choose a smooth projective core model, with $C$ smooth,
+\[
+ r:N'\longrightarrow N,\qquad c:N'\longrightarrow C.
+\]
+Let $N^\circ\subset N$ be a Zariski open set on which $r$ is an isomorphism and the ordinary core is holomorphic and submersive. The composition $c\circ r^{-1}\circ a$ extends meromorphically to $\overline U$ by the core extension theorem: the boundary is analytic, it can be included in a reduced divisor, and $a$ is locally an isomorphism.  Resolve this meromorphic map to obtain
+\[
+ \tau:\widehat U\longrightarrow\overline U,
+ \qquad h:\widehat U\longrightarrow C.
+\]
+The modification can be chosen to be an isomorphism above $a^{-1}(N^\circ)$.  Put $\widehat U_U=\tau^{-1}(U)$. The complement of $\widehat U_U$ is an analytic subset of the compact smooth projective manifold $\widehat U$.
+
+Take $s\in C$ very general, also outside the proper analytic sets required for generic smoothness of $h$ and $c$.  The compact level $L=h^{-1}(s)$ has finitely many connected components, each a smooth compact complex manifold.  For every component $L_i$ meeting $\widehat U_U$, its complement of the analytic boundary is connected. Within this connected complex manifold, the further excluded set
+\[
+ (a\circ\tau)^{-1}(N\setminus N^\circ)
+\]
+is analytic.  If the component meets the retained ordinary locus, this is a proper analytic subset and its removal is still connected. Here we use the elementary fact that a proper analytic subset of a connected complex manifold does not disconnect it: a path can be perturbed to avoid its real-codimension-at-least-two stratification. The excluded subset need not extend to all of $L_i$ for this argument. Components contained in the excluded set are simply discarded.
+
+It follows that the retained ordinary level
+\begin{equation}\label{eq:grp-finite-ordinary-level}
+ L\cap\tau^{-1}(a^{-1}(N^\circ))
+ \simeq a^{-1}(r(F_s^\circ)),
+ \qquad
+ F_s=c^{-1}(s),\quad F_s^\circ=F_s\cap r^{-1}(N^\circ),
+\end{equation}
+has finitely many connected components.  The isomorphism uses the choice that $\tau$ is an isomorphism on the ordinary locus.  The fibre $F_s$ is smooth, connected, projective and special, and $F_s^\circ$ is the complement of a proper analytic subset of it.
+
+Fix a point of $F_s^\circ$ and a lift to $U$.  The monodromy representation of the regular covering $a$ identifies its fibre with $K$.  If
+\[
+ H=\operatorname{im}\bigl(\pi_1(F_s^\circ)\longrightarrow K\bigr),
+\]
+the connected components of the restricted covering in \eqref{eq:grp-finite-ordinary-level} are the $H$-orbits in this fibre, equivalently the cosets of $H$ in $K$.  Thus
+\begin{equation}\label{eq:grp-index-equals-components}
+ [K:H]=\#\pi_0\bigl(a^{-1}(r(F_s^\circ))\bigr)<\infty.
+\end{equation}
+
+There is no increase of the relevant monodromy when the compact fibre is replaced by $F_s^\circ$.  Indeed the map to $N$ extends as $r|_{F_s}:F_s\to N$.  Moreover $\pi_1(F_s^\circ)\to\pi_1(F_s)$ is surjective, by perturbing loops off the proper analytic complement.  Hence
+\[
+ H=\operatorname{im}\bigl(\pi_1(F_s)\longrightarrow\pi_1(N)
+                  \longrightarrow K\bigr).
+\]
+The group $\pi_1(F_s)$ is virtually abelian by \eqref{eq:grp-abelianity-input}; so is its quotient $H$. An abelian subgroup of finite index in $H$ also has finite index in $K$, by \eqref{eq:grp-index-equals-components}.  This proves the lemma.
+
+If the core is a point, one may instead apply \eqref{eq:grp-abelianity-input} directly to $N$, since $N$ is then special and $K$ is a quotient of $\pi_1(N)$.  This also covers dimension zero.
+\end{proof}
+
+\begin{theorem}\label{thm:grp-kernel-abelian}
+After the finite-cover replacement of \cref{lem:grp-free-finite-index}, let $K=\ker(\Gamma\to\Lambda)$.  The group $K$ is finitely generated and virtually abelian.  For each $m\in M$, it acts on $f^{-1}(m)$ as the deck group of a connected regular covering of a smooth projective fibre.
+\end{theorem}
+
+\begin{proof}
+Since $\Lambda$ acts freely, the stabilizer in $\Gamma$ of $m$ is exactly $K$.  The equivariant submersion descends to a holomorphic submersion
+\[
+ g:X^+\longrightarrow B=M/\Lambda.
+\]
+It is proper because $X^+$ is compact.  Its fibre $N_b$, for the image $b$ of $m$, is a smooth connected projective manifold.  Restricting the covering $p$ gives
+\[
+ f^{-1}(m)\longrightarrow N_b
+\]
+as a connected regular covering with group $K$; all identifications follow by lifting to a small evenly covered neighborhood in $B$. The fibre compactifications in \cref{thm:quo-projection} give the hypothesis of \cref{lem:grp-compactifiable-cover}.  If the initial compactifying fibre is singular, it is smooth on the open leaf; resolve its boundary while leaving that leaf unchanged.  The lemma therefore proves that $K$ is virtually abelian. Finally the monodromy map $\pi_1(N_b)\to K$ is surjective, because the restricted covering is connected and regular.  A compact manifold has finitely generated fundamental group, so $K$ is finitely generated.
+\end{proof}

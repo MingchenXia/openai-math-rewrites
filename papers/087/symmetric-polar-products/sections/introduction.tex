@@ -1,0 +1,37 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+Let $K\subset\mathbb{R}^n$ be an origin-symmetric convex body: a compact convex set with nonempty interior and $K=-K$. Its polar is
+\[
+ K^\circ=\{p\in\mathbb{R}^n:\pairing{q}{p}\le1\text{ for every }q\in K\}.
+\]
+We place $K$ in the position coordinates and $K^\circ$ in the conjugate momentum coordinates of $(\mathbb{R}^n_q\times\mathbb{R}^n_p,\omega_0)$, where
+\[
+ \omega_0=\sum_{j=1}^n dq_j\wedge dp_j,
+ \qquad U_K=\operatorname{int} K\times\operatorname{int} K^\circ.
+\]
+For $c>0$, write
+\[
+ B^{2n}(c)=\{(q,p):\pi(|q|^2+|p|^2)<c\}.
+\]
+The Gromov width $c_G(U)$ of an open set $U\subset\mathbb{R}^{2n}$ is the supremum of the capacities $c$ for which there is a smooth embedding $e:B^{2n}(c)\to U$ satisfying $e^*\omega_0=\omega_0$.
+
+\begin{maintheorem}\label{thm:main}
+For every integer $n\ge2$ and every origin-symmetric convex body $K\subset\mathbb{R}^n$,
+\[
+ c_G(U_K)=4.
+\]
+More precisely, for every $0<c<4$ there is a smooth symplectic embedding $B^{2n}(c)\hookrightarrow U_K$.
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}.
+
+Volume preservation gives the symmetric Mahler inequality, since $\operatorname{vol}_{2n}(B^{2n}(c))=c^n/n!$ (\cref{cor:mahler}). In dimensions $n\geq3$, the construction also transfers the ball packings of \cref{cor:polar-packings} into $U_K$.
+
+\subsection{The ball and the polar bound}
+
+First suppose $K$ is cut out by finitely many strip inequalities $|\langle b_j,q\rangle|\leq1$. Let $g$ be the inverse of a conformal map from the disk to a lens with tips at $\pm\ii$. For a positive integer $k$, set $f_j(z)=g(\langle b_j,z\rangle)^k$ where all linear coordinates lie in the lens. The $f_j$ have a common zero of order at least $k$ at $0$ and compact joint sublevels below $1$. The holomorphic ball construction uses a radial regularization and a compactly supported Moser deformation to embed every ball of capacity less than $\pi k$ into the joint sublevel with its K\"ahler form (\cref{sec:ball}).
+
+A phase-space map sends the imaginary coordinate to position and integrates the K\"ahler density horizontally to obtain momentum. The planar estimate in \cref{sec:planar} bounds these horizontal integrals uniformly, including for slices approaching the lens tips. On the joint sublevel the resulting momentum belongs to $S_k\operatorname{int}K^\circ$, with $S_k/k\to\pi/4$. The map is injective by strict monotonicity in the remaining coordinate (\cref{sec:realization}). Rescaling the momentum and source ball gives capacities approaching $4$.
+
+Approximating the polar by inner polytopes transfers the lower bound to arbitrary $K$. For the upper bound a supporting pair places $U_K$ inside a symplectic cylinder with cross-sectional area $4$, and nonsqueezing bounds its width (\cref{sec:approximation}). The supporting-slab argument is also used by Artstein-Avidan, Karasev, and Ostrover \cite[Remark~4.2]{AAKO2014}.

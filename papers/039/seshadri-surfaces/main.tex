@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{amsart}
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+
+\usepackage{cgeometry}
+\crefname{maintheorem}{Theorem}{Theorems}
+\Crefname{maintheorem}{Theorem}{Theorems}
+
+\addbibresource{ComplexGeometry.bib}
+\defbibheading{bibliography}[\refname]{\section*{#1}}
+\setlength{\bibitemsep}{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\allowdisplaybreaks[2]
+\emergencystretch=1em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usetikzlibrary{arrows.meta,calc,positioning,patterns}
+
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\mult}{mult}
+\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\id}{id}
+
+\title{Maximal Seshadri constants on arbitrary polarized surfaces}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Let $L$ be an ample line bundle on a smooth integral complex projective surface $S$. We prove that the multipoint Seshadri constant of $L$ at $r$ very general points is $\sqrt{L^2/r}$ for all sufficiently large $r$. The proof transfers injective jet tests from finite subgroups of a two-dimensional torus.
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/jets}
+\input{sections/node}
+\input{sections/compression}
+\input{sections/lattice}
+\input{sections/nef}
+
+\printbibliography
+
+\end{document}

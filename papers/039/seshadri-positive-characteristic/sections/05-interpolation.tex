@@ -1,0 +1,101 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Interior filling and interpolation}\label{sec:interpolation}
+
+The proof needs interior lattice points of the reshaped supports, whose individual exponents are not given by the reshaping construction. We recover them by additivity across degrees, following \cite[Lemma~5.1]{OpenAI2026Higher}. This full-density argument is a special case of the semigroup approximation setting of \textcite[Theorem~1.6]{KK12}.
+
+\begin{lemma}\label{lem:interior-filling}
+Let $P\subset\mathbb{R}^n$, $n\ge1$, be a compact convex set with nonempty interior. Suppose finite sets $F_N\subset NP\cap\mathbb{Z}^n$, indexed by integers $N\ge1$, satisfy
+\[
+ F_N+F_{N'}\subset F_{N+N'}
+ \quad\text{and}\quad
+ \#F_N=\vol(P)N^n+o(N^n).
+\]
+Then for every compact set $K\subset\operatorname{int}(P)$ there is an integer $N_K$ such that
+\[
+ NK\cap\mathbb{Z}^n\subset F_N\qquad(N\ge N_K).
+\]
+\end{lemma}
+
+\begin{proof}
+A convex body has boundary of measure zero. The lattice-point asymptotic therefore gives $\#((NP\cap\mathbb Z^n)\setminus F_N)=o(N^n)$. Split $N=N_1+N_2$ with $N_1=\lfloor N/2\rfloor$. Choose $\rho>0$ such that the closed $\rho$-neighborhood of $K$ lies in $P$. For $y\in NK\cap\mathbb Z^n$, the intersection $N_1P\cap(y-N_2P)$ contains the ball of radius $\rho N_1$ about $(N_1/N)y$. By inscribing a cube, the ball contains $\gg N^n$ lattice points uniformly in $y$. Of these candidates for $y_1$, only $o(N^n)$ can have $y_1\notin F_{N_1}$ or $y-y_1\notin F_{N_2}$. A remaining decomposition gives $y\in F_{N_1}+F_{N_2}\subset F_N$.
+\end{proof}
+
+In the stretched simplex, the admissible powers of the last coordinate interpolate the coefficient of each transverse monomial independently, as in \cite[Lemma~5.2]{OpenAI2026Higher}.
+
+\begin{lemma}\label{lem:elongated-jets}
+Let $n,r\ge1$ and $m\ge0$ be integers, and let $k$ be a field containing distinct nonzero elements $c_1,\ldots,c_r$.  Set
+\begin{equation}\label{eq:interpolation-support}
+ E_m=\left\{(\beta,b)\in\mathbb{Z}_{\ge0}^{n-1}\times\mathbb{Z}_{\ge0}:
+          |\beta|+\frac br<m+1\right\},
+ \qquad |\beta|=\sum_{j=1}^{n-1}\beta_j.
+\end{equation}
+Then evaluation on jets through order $m$ at the $r$ points
+\[
+ q_i=(1,\ldots,1,c_i)\in\mathbb{T}^n(k)
+\]
+is an isomorphism from $M(E_m)$ to the direct sum of the jet spaces. For $n=1$, the tuple $\beta$ is empty and $|\beta|=0$.
+\end{lemma}
+
+\begin{proof}
+Write the torus coordinates as $(x',Y)=(x_1,\ldots,x_{n-1},Y)$ and put $X=x'-(1,\ldots,1)$. Translation from $x'$ to $X$ preserves the space of polynomials with the indicated support. In fact, the coefficient space of $Y^b$ consists of the polynomials of total degree less than $m+1-b/r$ in the first $n-1$ variables. Consequently every element of the space has a unique expression
+\[
+ \sum_{|\alpha|\le m}X^\alpha f_\alpha(Y),
+ \qquad
+ \deg f_\alpha<r(m+1-|\alpha|).
+\]
+At $q_i$ the local parameters are $X$ and $Y-c_i$. For each $\alpha$ the jet records the remainder of $f_\alpha$ modulo $(Y-c_i)^{m+1-|\alpha|}$. As $i$ varies, these powers are pairwise comaximal. The Chinese remainder theorem gives a bijection between the simultaneous remainders and the polynomials of degree less than the degree $r(m+1-|\alpha|)$ of their product. Taking this bijection for each $\alpha$ proves the assertion.
+\end{proof}
+
+For large $r$, successive reshapings put a translated copy of this interpolation support in the interior.
+
+\begin{proposition}\label{prop:generic-jets}
+Let $k$ be an algebraically closed field of positive characteristic, let $X/k$ be a smooth integral projective variety of dimension $n\ge2$, and let $L$ be ample.  Put $V=L^n$.  There is an integer $r_0=r_0(X,L)$ such that, for every integer $r\ge r_0$ and every real number
+\[
+ 0<\theta<\left(\frac Vr\right)^{1/n},
+\]
+there is an integer $N_0=N_0(r,\theta)$ such that, for every $N\ge N_0$, the sections of $NL$ separate jets through order $\lfloor N\theta\rfloor$ at some ordered $r$-tuple of distinct $k$-points, which may depend on $N$. For each such $N$, the same jet separation holds after base change to $K_r$ at the geometric generic tuple $p_1,\ldots,p_r$.
+\end{proposition}
+
+\begin{proof}
+Take the graded family $S_N$ and simplex $P_0=\Delta(a_1,\ldots,a_n)$ from \cref{prop:initial-simplex}. Thus $\prod_j a_j=V$, the support $S_N$ lies in $NP_0$, and
+\[
+ \#S_N=\frac{V}{n!}N^n+o(N^n).
+\]
+Let $\ell=\min_j a_j$, and choose $r_0$ so large that
+\[
+ w:=\left(\frac Vr\right)^{1/n}<\frac{\ell}{100}
+ \qquad(r\ge r_0).
+\]
+Fix one such $r$.  Reshape the first two intercepts to $(w,a_1a_2/w)$, then reshape the second and third intercepts, and continue through the $(n-1)$st and $n$th intercepts.  At every step, both intercepts $A,B$ being reshaped are at least $\ell$: untouched intercepts have this property, and the carried intercept $AB/w$ is larger than $A$ because $B>w$. Consequently
+\[
+ w\max(3/A,2/B)\le\frac{3w}{\ell}<\frac1{16},
+\]
+as required by \cref{prop:reshape}.  The product of all intercepts remains $V$.  The resulting graded family $F_N$ therefore satisfies
+\begin{equation}\label{eq:elongated-full-density}
+ \begin{aligned}
+ &F_N\subset NP_*\cap\mathbb{Z}^n,
+ \qquad P_*:=\Delta(w,\ldots,w,rw),\\
+ &\#F_N=\frac{V}{n!}N^n+o(N^n)
+        =\vol(P_*)N^n+o(N^n).
+ \end{aligned}
+\end{equation}
+Here the last intercept is $V/w^{n-1}=rw$. The transformations preserve backward jet transfer, so jet separation by $M(F_N)$ will imply jet separation by $H^0(X,NL)$.
+
+Fix $0<\theta<w$.  To apply \cref{lem:interior-filling}, we contract $P_*$ and then translate it away from the coordinate faces. Choose $\lambda$ with $\theta/w<\lambda<1$, and choose a vector $v\in\mathbb{R}_{>0}^n$ small enough that
+\[
+ v+\lambda P_*\subset\operatorname{int}(P_*).
+\]
+For example, it suffices that $\sum_{j<n}v_j/w+v_n/(rw)<1-\lambda$. Choose vectors $v_N\in N^{-1}\mathbb{Z}^n$ tending to $v$. For all sufficiently large $N$, the sets $v_N+\lambda P_*$ lie in a common compact subset $K$ of $\operatorname{int}(P_*)$.  Applying \cref{lem:interior-filling} to \eqref{eq:elongated-full-density} gives
+\begin{equation}\label{eq:translated-inner-support}
+ Nv_N+\bigl(N\lambda P_*\cap\mathbb{Z}^n\bigr)\subset F_N
+\end{equation}
+for all sufficiently large $N$.
+
+Put $m=\lfloor N\theta\rfloor$.  Since $\theta<\lambda w$, we have $m+1\le N\lambda w$ for all sufficiently large $N$. The defining inequality \eqref{eq:interpolation-support} therefore gives
+\[
+ E_m\subset N\lambda P_*\cap\mathbb{Z}^n.
+\]
+Choose distinct $c_1,\ldots,c_r\in k^\times$ and apply \cref{lem:elongated-jets}.  Multiplication by the Laurent monomial with exponent $Nv_N\in\mathbb{Z}^n$ is multiplication by a unit on the torus, hence induces an automorphism on every jet space.  Thus \eqref{eq:translated-inner-support} implies that $M(F_N)$ separates jets through order $m$ at these $r$ points.  Backward jet transfer through all reshapings and \cref{prop:initial-simplex} gives the asserted jet separation at an ordered tuple on $X$.
+
+For each fixed $r$, $\theta$, and sufficiently large $N$, the locus in $U_r$ where this evaluation map is surjective is a nonempty open set, by the openness of jet separation established in \cref{sec:transfer}. The variety $U_r$ is integral, so its generic point belongs to that open set. Global sections of $NL$ commute with field extension, as do principal parts. Base change of the evaluation map at the generic point to $K_r$ therefore gives the jet evaluation of $H^0(X_{K_r},NL_{K_r})$ at $p_1,\ldots,p_r$.  The same geometric generic tuple therefore satisfies every required jet-separation statement.
+\end{proof}

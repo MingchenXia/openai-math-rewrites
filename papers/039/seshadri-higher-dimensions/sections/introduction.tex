@@ -1,0 +1,42 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+Let $X$ be a smooth integral complex projective variety of dimension $n\ge3$, and let $L$ be an ample line bundle. Put $V=L^n$. For a tuple $\mathbf{p}=(p_1,\ldots,p_r)$ of distinct points, the ordinary multipoint Seshadri constant is
+\begin{equation}\label{eq:seshadri-definition}
+ \varepsilon(X,L;\mathbf{p})
+ =\inf_C\frac{L\cdot C}{\sum_{i=1}^r\mult_{p_i}C},
+\end{equation}
+where $C$ ranges over integral curves meeting at least one of the marked points, and the multiplicity is zero at points outside $C$. The volume bound is
+\begin{equation}\label{eq:volume-bound}
+ \varepsilon(X,L;\mathbf{p})\le (V/r)^{1/n}.
+\end{equation}
+
+
+Write
+\[
+ U_r(X)=\{(p_1,\ldots,p_r)\in X^r:p_i\ne p_j\text{ when }i\ne j\}.
+\]
+A property holds at \emph{very general} tuples if the exceptional tuples are contained in a countable union of proper Zariski-closed subsets of $U_r(X)$.
+
+\begin{maintheorem}\label{thm:main}
+Let $X$ be a smooth integral complex projective variety of dimension $n\ge3$, and let $L$ be an ample line bundle on $X$. There is an integer $r_0=r_0(X,L)\ge1$ such that for every integer $r\ge r_0$ there is a countable union $Z_r$ of proper Zariski-closed subsets of $U_r(X)$, with nonempty complement, for which
+\[
+ \varepsilon(X,L;\mathbf{p})=\left(\frac{L^n}{r}\right)^{1/n}
+ \qquad\text{for every }\mathbf{p}\in U_r(X)\setminus Z_r.
+\]
+\end{maintheorem}
+
+This exposition follows the proof in \cite{OpenAIMathSource}.
+
+Equivalently, on the blow-up $\pi:Y\to X$ at such a tuple, with exceptional divisors $E_1,\ldots,E_r$, the real divisor class
+\[
+ \pi^*L-(V/r)^{1/n}\sum_{i=1}^rE_i
+\]
+is nef and has top self-intersection zero.
+
+
+This is the qualitative Nagata--Biran--Szemberg assertion for the curve-defined Seshadri constant \cite[Conjecture~1.3 and Remark~1.4]{RoeRoss2009}. The surface companion \cite{OpenAI2026Surfaces} uses injective tests on finite subgroups. Here the argument uses surjective jet evaluations, which give lower bounds against every integral curve by \cref{lem:jets-curves}.
+
+Fix $r$ and set $w=(V/r)^{1/n}$. The goal is to prescribe jets through degree $\lfloor k\theta\rfloor$ in $H^0(X,kL)$ for every fixed $0<\theta<w$ in sufficiently large degree. A complete-intersection flag encodes the sections by finite sets of leading exponents in dilates of a simplex of volume $V/n!$ (\cref{sec:flag}). The sets add under multiplication, and a finite-degree degeneration transfers jet surjectivity from their monomials to the sections (\cref{sec:transfers}).
+
+The main operation replaces two simplex intercepts $A,B$ by $w,AB/w$. It preserves the number of exponents in each degree, their graded addition law, and the direction of jet transfer (\cref{sec:reshaping}). For large $r$, iteration leaves a simplex with intercepts $w,\ldots,w,rw$. Its volume still matches the leading term of the section count. Each lattice point in a fixed compact interior region has on the order of $k^n$ decompositions into two smaller degrees, while only $o(k^n)$ such decompositions can meet a missing exponent. This gives all lattice points in that region in large degree. Interpolation along the last coordinate now supplies the $r$ jet evaluations (\cref{sec:saturation}). We take their common very-general locus and let $\theta$ increase to $w$ in \cref{sec:conclusion}.

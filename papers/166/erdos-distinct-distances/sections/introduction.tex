@@ -1,0 +1,34 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Introduction}\label{sec:introduction}
+
+For a finite set $P\subset\mathbb{R}^d$, let $\Delta(P)$ be the set of distances $|p-q|$ with $p,q\in P$ and $p\ne q$. Erd\H{o}s asked how small $|\Delta(P)|$ can be for a set of given size \cite{erdos1946}.
+
+\begin{maintheorem}\label{thm:main}
+For every integer $d\ge3$, there is a constant $c_d>0$ such that every finite set $P\subset\mathbb{R}^d$ of $n\ge2$ distinct points satisfies
+\[
+ |\Delta(P)|\ge c_d n^{2/d}.
+\]
+\end{maintheorem}
+
+This exposition follows \cite{OpenAIMathSource}. The exponent is sharp: the grid $\{1,\ldots,t\}^d$ has $t^d$ points, and every squared distance on it is an integer between $1$ and $d(t-1)^2$. The three-dimensional bound of Tidor, Yu, and Zakharov reaches $n^{2/3-o(1)}$ \cite[Theorem~1.1]{tidoryuzakharov2026}. The constant-factor claim requires control uniform even when the deficit tends to zero more slowly than every negative power of $n$.
+
+Suppose the theorem fails, and take the least such dimension $d\geq3$. Along a sequence of counterexamples write $N=|P|$, $B=N^{1/d}$, $A=B^2$, and $M=1+|\Delta(P)|$. Thus $N\to\infty$ and $M/A\to0$. Lower-dimensional estimates and the planar theorem of Guth--Katz control the number of points in each proper affine flat (\cref{sec:reduction,cor:ci-planar-occupancy}).
+
+\subsection{Selecting directions}
+
+For $p\ne q$ put $\pi_p(q)=[q-p]\in\mathbb{P}^{d-1}$. We select a positive fraction of the unordered pairs so that, at each $p$, the retained displacements $q-p$ admit independent evaluation by degree-$\lfloor A\rfloor$ homogeneous polynomials. Failure of the selection would assign to each $p$ a family of projective curves of total degree $o(N/A)$, each spanning at most a projective plane. These curves would cover almost every pair from at least one endpoint (\cref{thm:sc-theorem}).
+
+To exclude this configuration, partition $P$ by the degrees of successive proper hypersurface cuts (\cref{sec:profiles}). Two estimates then compare the ranks of polynomial restriction maps. The covering curves bound the rank above on each direction set. The degree of the components containing the point set bounds the rank below after radial projection. The projection can identify components, so the lower bound uses secant geometry and a separate depth estimate (\cref{sec:geo-section,subsec:dep-section}). At the first and last degree scales, where the general estimate has no strict margin, independent differentials and the deletion of assigned terminal curves give the required bounds (\cref{sec:sparse-cones}).
+
+\subsection{Intersecting flats}
+
+Take a generically rotated copy $Q$ of $P$. For $(p,q)\in P\times Q$ use the affine flat
+\[
+ F_{p,q}=\{(Z,c):Z(p+q)/2+c=(p-q)/2\},
+ \qquad Z^{\mathsf T}=-Z,\quad c\in\mathbb{C}^d.
+\]
+Join two pairs when both physical segments were selected and their lengths agree. Cauchy--Schwarz gives order at least $N^4/M$ edges. On each $F_{p,q}$, interpolation supplies polynomial separators for its neighbour intersections. The concentration theorem for evaluation flats bounds how many neighbour intersections can lie in a low-degree zero set. An exceptional family corresponds to rich rigid motions. In dimension three, \cref{sec:mot-section} bounds the edges from those motions, so we can delete their edges while retaining a fixed fraction of the graph. In higher dimensions the number of available points already gives the required cap (\cref{sec:evaluation-flat-concentration,sec:reduction}).
+
+After pruning, sample the remaining flats with one fixed inclusion probability. The global concentration estimate gives a polynomial of degree at most $\lfloor A\rfloor$ that vanishes on the sampled flats and has nonzero restriction to some retained flat. Every retained flat has enough sampled neighbours to contradict the local concentration estimate. This rank comparison is the last part of \cref{sec:reduction}. The use of fixed constants throughout is what gives a lower bound by a positive multiple of $N^{2/d}$.
+
+The rigid-motion reduction originates in Elekes--Sharir \cite{elekessharir2011}. The closest higher-dimensional antecedents are Bardwell-Evans--Sheffer \cite{BardwellEvansSheffer2019} and Tidor--Yu--Zakharov \cite[Sections~3--6 and~10.2--10.3]{tidoryuzakharov2026}. The polynomial rank estimates draw on Chardin--Philippon and Walsh \cite{chardinphilippon1999,chardinphilippon2002erratum,walsh2020,walsh2023}. The classical planar inputs used in the proof are recorded in \cref{sec:classical-incidence}.

@@ -1,0 +1,176 @@
+% Adapted from an OpenAI Math manuscript. See PROVENANCE.md.
+\section{Polarity, cone reduction, and the scalar input}\label{sec:01-cones}
+
+The volume product can be written as a product of Laplace integrals on dual cones, as in \textcite[Lemma~2.1 and Corollary~4.1]{Klartag2018}. We give the normalization for the Gaussian argument below.
+
+\subsection{The center of polarity}
+For completeness we establish the minimizing-center convention used in \cref{thm:mahler}. The support function of a convex body $K$ is $h_K(u)=\sup_{x\in K}\langle u,x\rangle$. Polar coordinates give, for $z\in\operatorname{int}K$,
+\[
+ |(K-z)^\circ|=\frac1n\int_{S^{n-1}}
+      (h_K(u)-\langle z,u\rangle)^{-n}\,d\sigma(u),
+\]
+where $\sigma$ is surface measure on the unit sphere. The same formula in dimension one uses counting measure on $S^0$. Strict convexity follows from that of $t^{-n}$, since for distinct centers their inner products with $u$ differ on a set of positive measure.
+
+Let $R$ be the diameter of $K$. The polar of $K-z$ contains the ball of radius $1/R$ about the origin. If $u$ is a unit supporting normal at a boundary point $z_*$, the polar also contains the point $u/(h_K(u)-\langle z,u\rangle)$. The cone joining that point to the radius-$1/R$ disc in $u^\perp$ has volume proportional to $(h_K(u)-\langle z,u\rangle)^{-1}$, which diverges as $z\to z_*$. In dimension one that cone is the interval from the origin to the indicated point. Thus the unique minimum occurs in the interior.
+
+For an invertible affine map $x\mapsto Bx+a$,
+\[
+ (BK+a-(Bz+a))^\circ=B^{-\mathsf T}(K-z)^\circ.
+\]
+The two volume factors change by reciprocal determinants. This proves affine invariance of the volume product and the equivariance $s(BK+a)=Bs(K)+a$.
+
+\subsection{The cone formulation}
+Put $m=n+1$. For $z_0\in\operatorname{int}K$, define
+\[
+C=\{(y,t):t\ge0,\ y\in t(K-z_0)\},\qquad
+D=C^*=\{w:\langle w,x\rangle\ge0\text{ for all }x\in C\}.
+\]
+For cones, the star denotes this \emph{positive} duality. Both cones are closed, convex, solid, and pointed: solid means having nonempty interior, and pointed means containing no line. For interior vectors $V\in D$ and $U\in C$, write
+\[
+ \chi_C(V)=\int_C \ee^{-\langle V,x\rangle}\,\rd x,\qquad
+ \chi_D(U)=\int_D \ee^{-\langle U,x\rangle}\,\rd x
+\]
+using $m$-dimensional Lebesgue measure.
+
+\begin{lemma}\label{lem:cone-reduction}
+For $U=(0,m)$ and $V=(0,1)$,
+\[
+\chi_C(V)\chi_D(U)=\frac{(n!)^2}{m^m}|K|\,|(K-z_0)^\circ|.
+\]
+For any closed convex solid pointed cone and any interior pair $U\in C$, $V\in C^*$, the two Laplace integrals are finite. Their product and the inner product $\langle U,V\rangle$ are preserved by
+\[
+(C,D,U,V)\longmapsto(BC,B^{-\mathsf T}D,BU,B^{-\mathsf T}V)
+\]
+for every invertible linear map $B$.
+\end{lemma}
+\begin{proof}
+A point $(w,t)$ lies in $D$ exactly when $t\ge\sup_{x\in K-z_0}\langle-w,x\rangle$. Since zero is interior to $K-z_0$, this forces $t\ge0$, and the slice at height $t$ is $-t(K-z_0)^\circ$. Integrating the slices gives
+\[
+\chi_C((0,1))=n!|K|,\qquad
+\chi_D((0,m))=n!m^{-m}|(K-z_0)^\circ|.
+\]
+For general cone data, interiority of $V$ gives $\langle V,x\rangle\ge c|x|$ on $C$, and interiority of $U$ gives the analogous estimate on $D$. These inequalities prove finiteness. Under the displayed transformation, the two change-of-variables factors are $|\det B|$ and $|\det B|^{-1}$, and the inner products in the exponential factors are unchanged.
+\end{proof}
+
+It therefore suffices to prove
+\begin{equation}
+             \chi_C(V)\chi_D(U)\ \ge\ 1,                            \label{eq:cone-laplace-product}
+\end{equation}
+whenever $C\subset\mathbb{R}^m$ is closed, convex, solid, and pointed, $D=C^*$, $U\in\operatorname{int}C$, $V\in\operatorname{int}D$, and $\langle U,V\rangle=m$. These will be the standing cone assumptions. We will also show that equality implies that $C$ is a linear image of an orthant; \cref{sec:06-linear-equality} completes the equality argument for the original body.
+
+The proof constructs two maps from Gaussians using projections on the cones. To control their Jacobians we compare the whole field of projection derivatives to matrix thresholds, with a linear Gaussian matrix as threshold variable. A small feedback in the Gaussian covariance will be used to handle functions of that linear matrix. In the cone argument $C,D$ refer to cones, while $\mathsf K,\mathsf C$ below are scalar profiles and $\mathbf{K},\mathbf{C}$ will be expectations of their symmetric-matrix evaluations. Real layer indices such as $z$ in the projection field are separate from the Gaussian vector input.
+
+\subsection{Scalar profiles and their identities}
+The estimates will use fixed scalar functions, independent of the cone and its dimension. Write $\phi(x)=(2\pi)^{-1/2}\ee^{-x^2/2}$, $p(x)=\int_{-\infty}^x\phi(y)\,\rd y$, and $\gamma f=\int f(x)\phi(x)\,\rd x$. Put $\mathcal{N}=x\partial_x-\partial_x^2$. To define three profiles, temporarily write $X=p/\phi$, $Y=(1-p)/\phi$, $f=-(1-p)-\log p$, and $j=-p-\log(1-p)$. Set
+\[
+ d=(1+xX)^2 f+(1-xY)^2 j,\qquad
+ g=\tfrac12(1-X^2 f-Y^2 j),\qquad v=\log(XY).
+\]
+\begin{lemma}\label{lem:profile-identities}
+The functions just defined satisfy
+\begin{equation}
+ (\mathcal{N}+2)g=d,\qquad d'=2xd-v'-2g',\qquad
+ \mathcal{N} d-v''=-(\mathcal{N}+2)(d+g'').                          \label{eq:gaussian-profile-identities}
+\end{equation}
+\end{lemma}
+\begin{proof}
+We have $X'=1+xX$, $Y'=xY-1$, $f'=-\phi(1-p)/p$, and $j'=\phi p/(1-p)$. Direct substitution gives
+\[
+X^2f'+Y^2j'=0,\qquad XX'f'+YY'j'=-1,\qquad
+(X')^2f'+(Y')^2j'=-v'.
+\]
+Also $X''=xX'+X$ and $Y''=xY'+Y$. Thus $g'=-(XX'f+YY'j)$, and differentiating once more proves $(\mathcal{N}+2)g=d$. Differentiating $d=(X')^2f+(Y')^2j$ proves its stated first-order identity. Finally, differentiating the first identity twice gives $d''=(\mathcal{N}+4)g''$; combining this with the derivative of the second identity proves the third.
+\end{proof}
+
+\subsection{The quantitative scalar inequalities}
+
+The parameters used are (finite decimals throughout denote exact numbers)
+\[
+\begin{gathered}
+ b=.602,\quad c=.365,\quad k=\sqrt{b-c},\quad r=.22,\quad w=4.6,\quad s=3.6,\\
+ \eta=.022,\quad \kappa=1.16,\quad \lambda=.65,\quad a_R=7.5,\\
+ t_-=-.022,\quad t_+=.064,\quad t_c=.021,\quad t_r=.043,\quad m_*=.352.
+\end{gathered}
+\]
+Define
+\[
+\begin{aligned}
+ \mathsf K&=d-2g,\qquad \mathsf C=-d+(a_R-1)g'',\\
+ \pi(x)&=r(\cos(w\operatorname{arsinh}(x/s)),\sin(w\operatorname{arsinh}(x/s))),\\
+ q(x)&=k-\sqrt{b-r^2-d(x)},\qquad u=(\pi,q),\qquad S_u=(2+\mathcal{N})u=(S_\pi,S_q),\\
+ F&=d+|u|^2=c+2kq.
+\end{aligned}
+\]
+The identity $F=c+2kq$ makes the quadratic correction affine in $q$. The circular part $\pi$ supplies variation on nontrivial intervals, quantified in \cref{sec:08-segments}. We use the following scalar bounds, proved in \cref{sec:07-scalar,sec:08-segments}. A bar denotes the uniform average between the specified endpoints, with the value at the endpoint used if they coincide.
+
+\begin{proposition}\label{prop:scalar-input}
+The profiles and parameters above satisfy the following estimates.
+\begin{enumerate}
+\item \emph{Covariance bounds.} Pointwise,
+\[
+ b-r^2-d>0,\quad |v'-x|\le .319,\quad \mathsf C\le-.341,\quad S_q>0,
+\]
+and
+\[
+ \lambda t_-^2+t_-\mathsf C+\mathsf K>0,\qquad
+ \lambda t_+^2+t_+\mathsf C+\mathsf K<0,\qquad
+ 2(-.37)\mathsf C-(.37)^2-4\lambda\mathsf K>m_*^2 .
+\]
+\item \emph{Projection-layer bounds.} Set
+\[
+ \begin{gathered}
+ b_m=\frac{(1+t_+)(b-3\eta)}{3(3(b+\eta)-4c)},\qquad
+ e_0=.256,\quad \alpha=2.26,\quad h_s=.5,\\
+ H(z,x)=4c+4kq(x)+2(k-q(x))S_q(z)-2S_\pi(z)\cdot\pi(x),\\
+ H_0(z,x)=H(z,x)+v''(x)-2\kappa .
+ \end{gathered}
+\]
+Then for all $x,z\in\mathbb R$,
+\begin{equation}
+\begin{gathered}
+ \begin{aligned}
+ H+t_c H_0-\tfrac12t_r(h_s+H_0^2/h_s)
+ &>2(b+\eta+(b+\eta-\kappa)t_-)\\
+ &\quad+2 b_m S_q(z)S_q(x)+2e_0(2t_r)^2+H_0^2/\alpha,
+ \end{aligned}\\
+ 4c+2k(S_q(z)+S_q(x))-S_q(z)S_q(x)-S_\pi(z)\cdot S_\pi(x)>0 .
+\end{gathered}\label{eq:pointwise-layer-inequalities}
+\end{equation}
+\item \emph{Interval bound.} For endpoints $x_-<x_+$, use subscripts $\sigma\in\{-,+\}$ for evaluations, with $-\sigma$ the opposite endpoint. Write
+\[
+ e_K=\overline{\mathsf K}-\tfrac12(\mathsf K_++\mathsf K_-),
+ \quad
+ \Delta_{\mathsf K}=\mathsf K_+-\mathsf K_-,
+ \quad
+ \Delta_{\mathsf C}=\mathsf C_+-\mathsf C_-,
+\]
+and put
+\[
+ \Gamma=\frac{.80}{m_*^2}
+ \big[1.25(\Delta_{\mathsf K}+t_c\Delta_{\mathsf C})^2+
+                  5t_r^2\Delta_{\mathsf C}^2\big].
+\]
+The bound is
+\begin{equation}
+\begin{split}
+ e_K+\Gamma
+ +\frac{1}{8\lambda}\sum_\sigma
+ (\overline{\mathsf C}-\mathsf C_{-\sigma}-\overline{|u-u_\sigma|^2})^2
+ +\frac{t_+}{2}\sum_\sigma|\bar u-u_\sigma|^2\\
+ < \overline{|u|^2}-|\bar u|^2 .
+\end{split}\label{eq:interval-penalty}
+\end{equation}
+For coincident endpoints the two sides in the inequality are equal.
+\end{enumerate}
+\end{proposition}
+
+The covariance bounds are used in \cref{sec:02-projections}. In the entropy estimate, \eqref{eq:gaussian-profile-identities} expresses the contribution of $v$ through $d$ and $g$. The definitions give that $d,g,v$ and $q$ are even.
+
+We will also use that these profiles are smooth and that their derivatives have at most polynomial growth. The exponentially large factor $X$ does not make the profiles grow exponentially: its occurrences can be rewritten in terms of the Gaussian tail ratio $Y$. On $x\ge0$, $Y=\int_0^\infty \ee^{-xy-y^2/2}dy$ is comparable to $(1+x)^{-1}$, and $1-xY=O((1+x)^{-2})$. Set $h_0(y)=(-\log(1-y)-y)/y^2$, with its smooth value at zero. At $y=1-p$, the relevant formulas are
+\[
+ (1+xX)^2f=(1-p(1-xY))^2h_0(y),\qquad
+ X^2f=Y^2p^2h_0(y),\qquad j=-p-\log(Y\phi).
+\]
+Differentiating the Laplace integral for $Y$ gives bounds for its derivatives; these formulas then give polynomial derivative bounds for $d,g,v,\mathsf K,\mathsf C$. Reflection supplies the negative half-line. Moreover, $d\to1/2$ at both ends. The radicand in $q$ therefore tends to $b-r^2-1/2=.0536>0$. Its positivity in \cref{prop:scalar-input}, together with continuity on compact intervals, gives a uniform positive lower bound. Differentiation of the square root is thus legitimate globally and gives the same growth property for $q$. The bounds for $\pi$ follow directly from its explicit formula, and those for $F$ follow from $F=d+|u|^2$. \Cref{sec:07-scalar} provides the quantitative bounds used here. No such growth claim is made for the temporary factors $X,Y$ separately.
+
+In the cone argument below, a smooth scalar test always means that the test and all its derivatives have at most polynomial growth. We use natural logarithms. Matrix inequalities for symmetric matrices are in quadratic form order.
